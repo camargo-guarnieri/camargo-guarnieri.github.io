@@ -1892,7 +1892,7 @@
             <div class="row g-3 mb-3">
               <div class="col-12">
                 <div class="ticket-input-card h-100">
-                  <label class="form-label" for="fullTicketQuantity">Convites inteiros</label>
+                  <label class="form-label" for="fullTicketQuantity">Ingressos</label>
                   <input class="form-control form-control-lg rounded-4 js-ticket-quantity" id="fullTicketQuantity"
                     name="fullTicketQuantity" type="number" min="0" step="1" inputmode="numeric" value="1">
                   <div class="small mt-2 text-muted-gold">R$ 50,00 cada</div>
@@ -1903,9 +1903,9 @@
             <div class="mb-3">
               <div class="alert rounded-4 mb-0 message-box">
                 <div class="d-flex flex-column gap-1">
-                  <div><strong>Convites inteiros:</strong> <span data-total="fullQuantity">1</span> × R$ 50,00 = <span
+                  <div><strong>Ingressos:</strong> <span data-total="fullQuantity">1</span> × R$ 50,00 = <span
                       data-total="fullValue">R$ 50,00</span></div>
-                  <div><strong>Total de convites:</strong> <span data-total="quantity">1</span></div>
+                  <div><strong>Total de ingressos:</strong> <span data-total="quantity">1</span></div>
                   <div><strong>Total:</strong> <span class="total-price" data-total="value">R$ 50,00</span></div>
                 </div>
               </div>
@@ -2465,8 +2465,8 @@
           let message =
             `Olá! Meu nome é ${guestName}.` +
             getSellerMessageLine() +
-            ` Gostaria de reservar convite(s) para o ${EVENT.title}, no dia ${EVENT.dateLabel}, às ${EVENT.timeLabel}, no ${EVENT.place}.` +
-            ` Quantidade: ${summary.fullQuantity} convite(s) inteiro(s).` +
+            ` Gostaria de reservar ingresso(s) para o ${EVENT.title}, no dia ${EVENT.dateLabel}, às ${EVENT.timeLabel}, no ${EVENT.place}.` +
+            ` Quantidade: ${summary.fullQuantity} ingresso(s).` +
             ` Valor do convite: R$ 50,00.` +
             ` Total estimado: ${formatCurrency(summary.totalValue)}.` +
             ` Local do evento: ${EVENT.place} (${EVENT.mapsUrl}).` +
