@@ -1737,8 +1737,7 @@
                   <div class="info-card__icon" aria-hidden="true"><i class="bi bi-cash-coin"></i></div>
                   <span class="info-card__title">Ingresso</span>
                 </div>
-                <p class="info-card__text"><strong class="text-gold-soft">R$ 50,00</strong> inteira</p>
-                <p class="info-card__text"><strong class="text-gold-soft">R$ 25,00</strong> meia entrada</p>
+                <p class="info-card__text"><strong class="text-gold-soft">R$ 50,00</strong> entrada inteira</p>
               </div>
             </div>
 
@@ -1767,48 +1766,6 @@
             </div>
           </div>
         </section>
-
-        <section class="glass-card p-4 p-lg-5 mt-4 reveal section-card" aria-labelledby="halfTitle">
-          <div class="text-center mb-4">
-            <p class="eyebrow mb-2">Meia entrada</p>
-            <h2 class="section-title h1 mb-0" id="halfTitle">Quem paga R$ 25,00</h2>
-          </div>
-
-          <div class="row g-3">
-            <div class="col-md-4">
-              <article class="benefit-card">
-                <div class="info-card__head">
-                  <div class="info-card__icon" aria-hidden="true"><i class="bi bi-person-hearts"></i></div>
-                  <h3 class="info-card__title h6 mb-0">Crianças menores de 10 anos</h3>
-                </div>
-                <p class="info-card__text">Pagam <strong>meia entrada</strong>, no valor de R$ 25,00.</p>
-              </article>
-            </div>
-
-            <div class="col-md-4">
-              <article class="benefit-card">
-                <div class="info-card__head">
-                  <div class="info-card__icon" aria-hidden="true"><i class="bi bi-stars"></i></div>
-                  <h3 class="info-card__title h6 mb-0">Crianças com TEA</h3>
-                </div>
-                <p class="info-card__text">Crianças com Transtorno do Espectro Autista também pagam <strong>meia
-                    entrada</strong>.</p>
-              </article>
-            </div>
-
-            <div class="col-md-4">
-              <article class="benefit-card">
-                <div class="info-card__head">
-                  <div class="info-card__icon" aria-hidden="true"><i class="bi bi-universal-access-circle"></i></div>
-                  <h3 class="info-card__title h6 mb-0">Pessoas com deficiência - PcD</h3>
-                </div>
-                <p class="info-card__text">Pessoas com deficiência pagam <strong>meia entrada</strong>, no valor de R$
-                  25,00.</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
         <div class="row g-4 mt-1 align-items-stretch">
           <div class="col-lg-6 reveal">
             <section class="glass-card p-4 h-100 quick-card" aria-labelledby="countdownTitle">
@@ -1839,8 +1796,8 @@
               <p class="mb-3 text-muted-gold">Clique no botão abaixo para abrir a conversa com a mensagem pronta e
                 solicitar seu convite.</p>
               <div class="mb-4 small text-muted-gold">
-                <div><i class="bi bi-cash-coin me-2 text-gold-soft" aria-hidden="true"></i>Inteira: <strong>R$
-                    50,00</strong> | Meia: <strong>R$ 25,00</strong></div>
+                <div><i class="bi bi-cash-coin me-2 text-gold-soft" aria-hidden="true"></i>Entrada inteira: <strong>R$
+                    50,00</strong></div>
                 <div class="mt-2" data-js="pickupSummary"><i class="bi bi-bag-check me-2 text-gold-soft"
                     aria-hidden="true"></i>Retirada da pulseira: Escola de Música Camargo Guarnieri</div>
               </div>
@@ -1920,9 +1877,7 @@
         <form id="reservationForm" novalidate>
           <div class="modal-body" data-js="modalBody">
             <div class="alert rounded-4 mb-3 message-box" data-js="modalTicketAlert">
-              <div><strong>Inteira:</strong> R$ 50,00 por pessoa.</div>
-              <div><strong>Meia entrada:</strong> R$ 25,00 para crianças menores de 10 anos, crianças com TEA e pessoas
-                com deficiência - PcD.</div>
+              <div><strong>Entrada inteira:</strong> R$ 50,00 por pessoa.</div>
               <div class="small mt-1 text-muted-gold" data-js="modalPickupLine">A pulseira deve ser retirada na Escola
                 de Música Camargo Guarnieri.</div>
             </div>
@@ -1935,7 +1890,7 @@
             </div>
 
             <div class="row g-3 mb-3">
-              <div class="col-md-6">
+              <div class="col-12">
                 <div class="ticket-input-card h-100">
                   <label class="form-label" for="fullTicketQuantity">Convites inteiros</label>
                   <input class="form-control form-control-lg rounded-4 js-ticket-quantity" id="fullTicketQuantity"
@@ -1943,24 +1898,13 @@
                   <div class="small mt-2 text-muted-gold">R$ 50,00 cada</div>
                 </div>
               </div>
-
-              <div class="col-md-6">
-                <div class="ticket-input-card h-100">
-                  <label class="form-label" for="halfTicketQuantity">Meias entradas</label>
-                  <input class="form-control form-control-lg rounded-4 js-ticket-quantity" id="halfTicketQuantity"
-                    name="halfTicketQuantity" type="number" min="0" step="1" inputmode="numeric" value="0">
-                  <div class="small mt-2 text-muted-gold">R$ 25,00 cada</div>
-                </div>
-              </div>
             </div>
 
             <div class="mb-3">
               <div class="alert rounded-4 mb-0 message-box">
                 <div class="d-flex flex-column gap-1">
-                  <div><strong>Inteiras:</strong> <span data-total="fullQuantity">1</span> × R$ 50,00 = <span
+                  <div><strong>Convites inteiros:</strong> <span data-total="fullQuantity">1</span> × R$ 50,00 = <span
                       data-total="fullValue">R$ 50,00</span></div>
-                  <div><strong>Meias:</strong> <span data-total="halfQuantity">0</span> × R$ 25,00 = <span
-                      data-total="halfValue">R$ 0,00</span></div>
                   <div><strong>Total de convites:</strong> <span data-total="quantity">1</span></div>
                   <div><strong>Total:</strong> <span class="total-price" data-total="value">R$ 50,00</span></div>
                 </div>
@@ -2002,9 +1946,7 @@
         hour: 19,
         minute: 30,
         fullTicketPrice: 50,
-        halfTicketPrice: 25,
-        ticketPriceText: 'Inteira: R$ 50,00 | Meia entrada: R$ 25,00',
-        halfTicketRules: 'Meia entrada para crianças menores de 10 anos, crianças com TEA e pessoas com deficiência - PcD',
+        ticketPriceText: 'Entrada inteira: R$ 50,00',
         pickupPlace: 'Escola de Música Camargo Guarnieri',
         pickupAddress: 'R. Ernesto Tito, 296 - Vila Carolina, Rio Verde - GO, 75906-441',
         pickupMapsUrl: 'https://maps.app.goo.gl/SdzFviSMzrk8Kyku9'
@@ -2032,7 +1974,6 @@
         guestName: '#guestName',
         guestNote: '#guestNote',
         fullTicketQuantity: '#fullTicketQuantity',
-        halfTicketQuantity: '#halfTicketQuantity',
         ticketQuantity: '.js-ticket-quantity',
         whatsappLink: '.js-whatsapp-link',
         pickupLink: '.js-pickup-link',
@@ -2211,17 +2152,13 @@
 
       const getTicketSummary = () => {
         const fullQuantity = normalizeQuantity($(SELECTOR.fullTicketQuantity)?.value);
-        const halfQuantity = normalizeQuantity($(SELECTOR.halfTicketQuantity)?.value);
         const fullValue = fullQuantity * EVENT.fullTicketPrice;
-        const halfValue = halfQuantity * EVENT.halfTicketPrice;
 
         return {
           fullQuantity,
-          halfQuantity,
           fullValue,
-          halfValue,
-          totalQuantity: fullQuantity + halfQuantity,
-          totalValue: fullValue + halfValue
+          totalQuantity: fullQuantity,
+          totalValue: fullValue
         };
       };
 
@@ -2236,9 +2173,7 @@
         const summary = getTicketSummary();
 
         updateText('[data-total="fullQuantity"]', summary.fullQuantity);
-        updateText('[data-total="halfQuantity"]', summary.halfQuantity);
         updateText('[data-total="fullValue"]', formatCurrency(summary.fullValue));
-        updateText('[data-total="halfValue"]', formatCurrency(summary.halfValue));
         updateText('[data-total="quantity"]', summary.totalQuantity);
         updateText('[data-total="value"]', formatCurrency(summary.totalValue));
       };
@@ -2247,7 +2182,7 @@
         'Olá!' +
         getSellerMessageLine() +
         ` Gostaria de reservar meu convite para o ${EVENT.title}, no dia ${EVENT.dateLabel}, às ${EVENT.timeLabel}, no ${EVENT.place}.` +
-        ` Valores: ${EVENT.ticketPriceText}. ${EVENT.halfTicketRules}. Local do evento: ${EVENT.mapsUrl}.` +
+        ` Valor: ${EVENT.ticketPriceText}. Local do evento: ${EVENT.mapsUrl}.` +
         getPickupInfo().messageLine
       );
 
@@ -2523,7 +2458,7 @@
           }
 
           if (summary.totalQuantity < 1) {
-            alert('Informe pelo menos 1 convite inteiro ou 1 meia entrada.');
+            alert('Informe pelo menos 1 convite inteiro.');
             return;
           }
 
@@ -2531,10 +2466,9 @@
             `Olá! Meu nome é ${guestName}.` +
             getSellerMessageLine() +
             ` Gostaria de reservar convite(s) para o ${EVENT.title}, no dia ${EVENT.dateLabel}, às ${EVENT.timeLabel}, no ${EVENT.place}.` +
-            ` Quantidade: ${summary.fullQuantity} inteira(s) e ${summary.halfQuantity} meia(s), totalizando ${summary.totalQuantity} convite(s).` +
-            ` Valores: inteira R$ 50,00 e meia entrada R$ 25,00.` +
+            ` Quantidade: ${summary.fullQuantity} convite(s) inteiro(s).` +
+            ` Valor do convite: R$ 50,00.` +
             ` Total estimado: ${formatCurrency(summary.totalValue)}.` +
-            ` Regra da meia entrada: ${EVENT.halfTicketRules}.` +
             ` Local do evento: ${EVENT.place} (${EVENT.mapsUrl}).` +
             getPickupInfo().messageLine;
 
