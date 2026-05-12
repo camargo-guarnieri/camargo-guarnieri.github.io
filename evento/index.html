@@ -1,16 +1,20 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#09070f">
   <title>Tributo | OSCG</title>
-  <meta name="description" content="Convite interativo para o Tributo da Orquestra Sinfônica Camargo Guarnieri. Reserve seu convite pelo WhatsApp.">
+  <meta name="description"
+    content="Convite interativo para o Tributo da Orquestra Sinfônica Camargo Guarnieri. Reserve seu convite pelo WhatsApp.">
 
-  <!-- Bootstrap 5+ -->
+  <!-- Dependências visuais do projeto -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <style>
     :root {
@@ -72,8 +76,13 @@
     }
 
     @keyframes starsMove {
-      0% { transform: translate3d(0, 0, 0); }
-      100% { transform: translate3d(-120px, 120px, 0); }
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(-120px, 120px, 0);
+      }
     }
 
     .font-cinzel {
@@ -135,53 +144,66 @@
 
     .hero {
       position: relative;
-      min-height: 100vh;
       display: grid;
-      align-items: center;
-      padding: clamp(34px, 6vw, 76px) clamp(18px, 5vw, 68px);
+      align-items: start;
+      padding: clamp(2.6rem, 5vw, 4.5rem) clamp(1rem, 4.4vw, 3rem) clamp(2rem, 3.8vw, 3rem);
+      overflow: hidden;
+    }
+
+    .hero>.container-fluid {
+      position: relative;
+      z-index: 2;
+      padding-left: 0;
+      padding-right: 0;
     }
 
     .spotlight {
       position: absolute;
-      top: 110px;
+      top: -250px;
       width: 260px;
-      height: 460px;
+      height: 850px;
       background: radial-gradient(ellipse at top, rgba(255, 255, 255, .72), rgba(255, 255, 255, .18) 28%, transparent 62%);
       filter: blur(.5px);
-      opacity: .5;
+      opacity: .3;
       pointer-events: none;
       mix-blend-mode: screen;
       animation: spotlightPulse 4s ease-in-out infinite alternate;
     }
 
     .spotlight.left {
-      left: -58px;
-      transform: rotate(-29deg);
+      left: 0px;
+      transform: rotate(145deg);
     }
 
     .spotlight.right {
-      right: -58px;
-      transform: rotate(29deg);
-      animation-delay: .7s;
+      right: 0px;
+      transform: rotate(-145deg);
     }
 
     @keyframes spotlightPulse {
-      from { opacity: .36; }
-      to { opacity: .7; }
+      from {
+        opacity: .36;
+      }
+
+      to {
+        opacity: .7;
+      }
     }
+
 
     .composer-pill {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: .55rem .9rem;
+      padding: .5rem .82rem;
       border: 1px solid rgba(255, 216, 137, .36);
       border-radius: 999px;
       background: rgba(255, 255, 255, .06);
       color: var(--gold-2);
       font-family: "Cinzel", serif;
       font-weight: 700;
-      letter-spacing: .04em;
+      letter-spacing: .035em;
+      font-size: clamp(.78rem, 1vw, .95rem);
       backdrop-filter: blur(8px);
       box-shadow: inset 0 0 18px rgba(255, 207, 104, .06);
       transform: translateY(0);
@@ -195,8 +217,8 @@
     }
 
     .main-title {
-      font-size: clamp(3.4rem, 12vw, 8.8rem);
-      line-height: .88;
+      font-size: clamp(3rem, 8.2vw, 6.6rem);
+      line-height: .92;
       letter-spacing: .06em;
       font-weight: 900;
       margin: 0;
@@ -205,8 +227,13 @@
     }
 
     @keyframes titleGlow {
-      from { filter: drop-shadow(0 10px 18px rgba(0, 0, 0, .65)); }
-      to { filter: drop-shadow(0 0 24px rgba(255, 192, 85, .38)); }
+      from {
+        filter: drop-shadow(0 10px 18px rgba(0, 0, 0, .65));
+      }
+
+      to {
+        filter: drop-shadow(0 0 24px rgba(255, 192, 85, .38));
+      }
     }
 
     .sub-kicker {
@@ -224,8 +251,8 @@
       gap: 14px;
       color: var(--gold);
       opacity: .95;
-      margin: 12px auto 48px;
-      max-width: 540px;
+      margin: 10px auto clamp(2rem, 5vw, 3.25rem);
+      max-width: 480px;
     }
 
     .ornament-line::before,
@@ -243,21 +270,21 @@
     .glass-card {
       background: var(--card);
       border: 1px solid rgba(255, 218, 135, .24);
-      border-radius: 24px;
+      border-radius: 22px;
       box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
       backdrop-filter: blur(14px);
     }
 
     .event-card {
       position: relative;
-      min-height: 360px;
+      min-height: 320px;
       background:
         radial-gradient(circle at 50% 10%, rgba(255, 252, 235, .72), transparent 18%),
         linear-gradient(135deg, rgba(255, 246, 218, .96), rgba(214, 181, 116, .94));
       color: #251606;
       border: 4px double #9d681e;
-      border-radius: 14px;
-      padding: clamp(22px, 4vw, 44px) clamp(20px, 4vw, 34px) 84px;
+      border-radius: 18px;
+      padding: clamp(1.35rem, 3.2vw, 2.4rem) clamp(1.15rem, 3vw, 2rem) 4.6rem;
       box-shadow: 0 18px 44px rgba(0, 0, 0, .36), inset 0 0 20px rgba(96, 57, 8, .16);
       overflow: hidden;
     }
@@ -268,21 +295,22 @@
       top: -26px;
       left: 50%;
       transform: translateX(-50%);
-      width: 78px;
-      height: 78px;
+      width: 68px;
+      height: 68px;
       display: grid;
       place-items: center;
       border-radius: 50%;
       color: #6f4310;
       background: rgba(255, 236, 179, .9);
       border: 1px solid rgba(111, 67, 16, .35);
-      font-size: 2rem;
+      font-size: 1.65rem;
     }
 
     .event-card .date {
-      margin-top: 10px;
+      margin-top: .35rem;
+      margin-bottom: 0;
       font-family: "Playfair Display", serif;
-      font-size: clamp(2.5rem, 5.6vw, 4.1rem);
+      font-size: clamp(2.1rem, 4.6vw, 3.35rem);
       font-weight: 700;
       line-height: 1;
     }
@@ -292,7 +320,7 @@
       font-family: "Cinzel", serif;
       font-weight: 900;
       line-height: 1.05;
-      font-size: clamp(1.6rem, 3.8vw, 2.5rem);
+      font-size: clamp(1.25rem, 2.7vw, 2rem);
     }
 
     .event-location-badge {
@@ -306,13 +334,13 @@
       gap: 6px;
       width: max-content;
       max-width: calc(100% - 36px);
-      padding: .72rem 1.1rem;
+      padding: .62rem .95rem;
       border-radius: 999px;
       background: rgba(37, 22, 6, .92);
       color: #f7dfab;
       border: 1px solid rgba(157, 104, 30, .6);
       font-weight: 800;
-      font-size: .92rem;
+      font-size: .84rem;
       box-shadow: 0 10px 24px rgba(0, 0, 0, .22);
       transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
       z-index: 2;
@@ -327,14 +355,40 @@
     }
 
     .brand-card {
-      min-height: 360px;
+      min-height: 320px;
       border-color: rgba(255, 218, 135, .32);
+      padding: clamp(1.4rem, 3vw, 2.4rem) !important;
       box-shadow: 0 24px 60px rgba(0, 0, 0, .35), inset 0 0 34px rgba(255, 213, 124, .04);
+    }
+
+    .hero-cards-row {
+      width: auto;
+      margin-top: 0;
+      row-gap: 1.4rem;
+    }
+
+    .hero-cards-row>[class*="col-"] {
+      display: flex;
+    }
+
+    .hero-cards-row .event-card,
+    .hero-cards-row .brand-card {
+      width: 100%;
+      min-height: clamp(300px, 31vw, 370px);
+      border-radius: 22px;
+    }
+
+    @media (min-width: 992px) {
+
+      .hero-cards-row .event-card,
+      .hero-cards-row .brand-card {
+        min-height: clamp(320px, 30vw, 370px);
+      }
     }
 
     .brand-monogram {
       font-family: "Playfair Display", serif;
-      font-size: clamp(4rem, 10vw, 7rem);
+      font-size: clamp(3.2rem, 7vw, 5.4rem);
       line-height: .82;
       color: transparent;
       background: linear-gradient(180deg, #fff8dc, #d69a40 55%, #fff1b0);
@@ -344,7 +398,7 @@
     }
 
     .brand-monogram-os {
-      font-size: clamp(3.4rem, 8vw, 6.4rem);
+      font-size: clamp(3rem, 6.2vw, 5rem);
       line-height: .9;
       letter-spacing: -.06em;
       margin-bottom: .85rem;
@@ -471,8 +525,15 @@
     }
 
     @keyframes ctaPulse {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-2px) scale(1.025); }
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-2px) scale(1.025);
+      }
     }
 
     .floating-whatsapp {
@@ -494,8 +555,15 @@
     }
 
     @keyframes floatBtn {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
     }
 
     .countdown-box {
@@ -640,134 +708,281 @@
       border-top: 1px solid rgba(255, 218, 135, .14);
     }
 
+    .content-sections {
+      padding-inline: clamp(1rem, 4.4vw, 3rem) !important;
+      padding-bottom: clamp(2rem, 4vw, 3.5rem) !important;
+    }
+
+    .content-sections>.glass-card,
+    .content-sections>.row {
+      margin-top: 1.25rem;
+    }
+
+    .content-sections>.glass-card:first-child {
+      margin-top: 0;
+    }
+
+    .section-card {
+      padding: clamp(1.25rem, 3vw, 2.25rem) !important;
+    }
+
+    .quick-card {
+      padding: clamp(1.25rem, 3vw, 2.1rem) !important;
+    }
+
+    .section-title.display-6,
+    .section-title.h1,
+    .section-title.display-5 {
+      font-size: clamp(1.65rem, 3.2vw, 2.45rem);
+      line-height: 1.08;
+    }
+
+    .event-info-card {
+      padding: clamp(1rem, 2vw, 1.35rem);
+    }
+
+    .benefit-card {
+      padding: clamp(1rem, 2vw, 1.25rem);
+    }
+
     @media (max-width: 991.98px) {
       .hero {
-        min-height: auto;
+        padding-top: 3rem;
       }
 
       .action-stack {
         margin-left: 0;
         width: 100%;
       }
+
+      .spotlight {
+        opacity: .5;
+      }
+    }
+
+
+    @media (max-width: 991.98px) {
+      .spotlight {
+        width: 280px;
+        height: 500px;
+      }
+
+      .spotlight.left {
+        left: -10px;
+      }
+
+      .spotlight.right {
+        right: -10px;
+      }
     }
 
     @media (max-width: 767.98px) {
+      .page-shell {
+        padding: .75rem;
+      }
+
+      .invitation-frame {
+        border-radius: 14px;
+        outline-width: 2px;
+      }
+
       .hero {
-        padding-top: 54px;
-        padding-bottom: 46px;
+        padding: 2.4rem 1rem 1.6rem;
+      }
+
+      .spotlight {
+        display: none;
       }
 
       .composer-pill {
         width: 100%;
+        min-height: 42px;
       }
 
-      .event-card,
-      .brand-card {
-        min-height: 320px;
+      .main-title {
+        font-size: clamp(2.7rem, 16vw, 4.6rem);
+        letter-spacing: .035em;
+      }
+
+      .sub-kicker {
+        letter-spacing: .12em;
+      }
+
+      .ornament-line {
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-cards-row .event-card,
+      .hero-cards-row .brand-card {
+        min-height: 280px;
+      }
+
+      .event-card .date {
+        font-size: clamp(2rem, 12vw, 3rem);
+      }
+
+      .event-card .place,
+      .event-card .time {
+        font-size: clamp(1.2rem, 7vw, 1.75rem);
+      }
+
+      .brand-monogram-os {
+        font-size: clamp(3rem, 15vw, 4.5rem);
+      }
+
+      .content-sections {
+        padding-inline: 1rem !important;
       }
 
       .floating-whatsapp {
-        width: 56px;
-        height: 56px;
-        font-size: 1.6rem;
+        width: 54px;
+        height: 54px;
+        right: max(14px, env(safe-area-inset-right));
+        bottom: max(14px, env(safe-area-inset-bottom));
+        font-size: 1.55rem;
       }
 
       .support-logo {
-        width: min(180px, 100%);
-        padding: 18px;
+        width: min(150px, 47%);
+        padding: 14px;
+        border-radius: 14px;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .hero {
+        padding-top: 2.2rem;
+      }
+
+      .composer-pill {
+        font-size: .74rem;
+      }
+
+      .section-card,
+      .quick-card {
+        padding: 1.1rem !important;
+      }
+
+      .btn-lg {
+        --bs-btn-padding-y: .72rem;
+        --bs-btn-padding-x: 1rem;
+        --bs-btn-font-size: .98rem;
+      }
+
+      .event-location-badge {
+        max-width: calc(100% - 1.5rem);
+        white-space: normal;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .001ms !important;
       }
     }
   </style>
 </head>
+
 <body>
   <a class="floating-whatsapp js-whatsapp" href="#" aria-label="Reservar convite pelo WhatsApp">
     <i class="bi bi-whatsapp"></i>
   </a>
 
-  <main class="page-shell">
-    <section class="invitation-frame">
-      <span class="spotlight left"></span>
-      <span class="spotlight right"></span>
+  <main class="page-shell" id="conteudo">
+    <article class="invitation-frame" aria-labelledby="eventTitle">
+      <span class="spotlight left" aria-hidden="true"></span>
+      <span class="spotlight right" aria-hidden="true"></span>
 
-      <div class="hero text-center">
+      <header class="hero text-center" aria-labelledby="eventTitle">
         <div class="container-fluid position-relative">
           <div class="row g-4 align-items-center justify-content-center">
             <div class="col-12">
-              <div class="row g-2 g-md-3 justify-content-between align-items-center mb-4 reveal">
-                <div class="col-6 col-md-auto"><span class="composer-pill">Ennio Morricone</span></div>
-                <div class="col-6 col-md-auto"><span class="composer-pill">Hans Zimmer</span></div>
-                <div class="col-6 col-md-auto"><span class="composer-pill">John Williams</span></div>
-                <div class="col-6 col-md-auto"><span class="composer-pill">Alan Silvestri</span></div>
-              </div>
+              <ul class="row g-2 g-md-3 justify-content-between align-items-center mb-4 reveal list-unstyled"
+                aria-label="Compositores homenageados">
+                <li class="col-6 col-md-auto"><span class="composer-pill">Ennio Morricone</span></li>
+                <li class="col-6 col-md-auto"><span class="composer-pill">Hans Zimmer</span></li>
+                <li class="col-6 col-md-auto"><span class="composer-pill">John Williams</span></li>
+                <li class="col-6 col-md-auto"><span class="composer-pill">Alan Silvestri</span></li>
+              </ul>
 
               <p class="sub-kicker mb-2 reveal">Uma noite mágica com o melhor do cinema</p>
-              <h1 class="main-title font-cinzel gold-text reveal">Tributo</h1>
+              <h1 id="eventTitle" class="main-title font-cinzel gold-text reveal">Tributo</h1>
               <div class="ornament-line reveal"><i class="bi bi-music-note-beamed fs-2"></i></div>
             </div>
 
-            <div class="col-12 col-xl-10 order-1">
-              <div class="row g-4 align-items-stretch justify-content-center">
+            <div class="col-12 order-1">
+              <div class="row g-4 align-items-stretch hero-cards-row">
                 <div class="col-lg-6 reveal">
-                  <div class="event-card h-100 d-flex flex-column justify-content-center text-center">
-                    <a
-                      href="https://maps.app.goo.gl/hFvK7NtxnZLegnYb9"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  <section class="event-card h-100 d-flex flex-column justify-content-center text-center"
+                    aria-labelledby="heroDate">
+                    <a href="https://maps.app.goo.gl/hFvK7NtxnZLegnYb9" target="_blank" rel="noopener noreferrer"
                       class="event-location-badge text-decoration-none"
-                      aria-label="Ver localização do evento no Google Maps"
-                    >
+                      aria-label="Ver localização do evento no Google Maps">
                       <i class="bi bi-geo-alt-fill"></i>
                       Localização do evento
                     </a>
-                    <div class="date">25 de Junho</div>
-                    <div class="place mt-3">IF Goiano</div>
-                    <div class="time mt-1">19h30</div>
-                  </div>
+                    <p class="date" id="heroDate">25 de Junho</p>
+                    <p class="place mt-3 mb-0">IF Goiano</p>
+                    <p class="time mt-1 mb-0">19h30</p>
+                  </section>
                 </div>
 
                 <div class="col-lg-6 reveal">
-                  <div class="glass-card brand-card h-100 p-4 p-lg-5 text-center d-flex flex-column justify-content-center">
+                  <section
+                    class="glass-card brand-card h-100 p-4 p-lg-5 text-center d-flex flex-column justify-content-center"
+                    aria-labelledby="brandTitle">
                     <div class="brand-monogram brand-monogram-os">OSCG</div>
-                    <h2 class="section-title h3 mb-2">Orquestra Sinfônica</h2>
-                    <p class="font-cinzel text-uppercase mb-4" style="letter-spacing:.12em; color: var(--gold-2) !important;">Camargo Guarnieri</p>
-                    <button type="button" class="btn btn-gold btn-lg rounded-pill px-4 pulse-cta" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                    <h2 id="brandTitle" class="section-title h3 mb-2">Orquestra Sinfônica</h2>
+                    <p class="font-cinzel text-uppercase mb-4"
+                      style="letter-spacing:.12em; color: var(--gold-2) !important;">Camargo Guarnieri</p>
+                    <button type="button" class="btn btn-gold btn-lg rounded-pill px-4 pulse-cta" data-bs-toggle="modal"
+                      data-bs-target="#reservationModal">
                       <i class="bi bi-ticket-perforated me-2"></i>Reservar convite
                     </button>
-                  </div>
+                  </section>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
-      <section class="container-fluid px-3 px-lg-5 pb-5">
-        <div class="glass-card p-4 p-lg-5 reveal">
+      <section class="container-fluid px-3 px-lg-5 pb-5 content-sections" aria-label="Informações e reserva do convite">
+        <section class="glass-card p-4 p-lg-5 reveal section-card" aria-labelledby="reserveTitle">
           <div class="row g-4 align-items-center">
             <div class="col-lg-8">
               <p class="sub-kicker mb-2">Evento especial</p>
-              <h2 class="section-title display-6 mb-3">Retire ou reserve seu convite</h2>
+              <h2 id="reserveTitle" class="section-title display-6 mb-3">Retire ou reserve seu convite</h2>
               <p class="mb-0 text-opacity-75" style="color: var(--muted);">
-                Garanta sua presença em uma apresentação dedicada às trilhas inesquecíveis do cinema, com repertório inspirado em grandes compositores.
+                Garanta sua presença em uma apresentação dedicada às trilhas inesquecíveis do cinema, com repertório
+                inspirado em grandes compositores.
               </p>
             </div>
             <div class="col-lg-4">
               <div class="action-stack">
-                <button type="button" class="btn btn-gold btn-lg rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                <button type="button" class="btn btn-gold btn-lg rounded-pill px-4" data-bs-toggle="modal"
+                  data-bs-target="#reservationModal">
                   <i class="bi bi-ticket-perforated me-2"></i>Reservar convite
                 </button>
-                <a class="btn btn-outline-warning btn-lg rounded-pill px-4" href="https://maps.app.goo.gl/SdzFviSMzrk8Kyku9" target="_blank" rel="noopener noreferrer">
+                <a class="btn btn-outline-warning btn-lg rounded-pill px-4"
+                  href="https://maps.app.goo.gl/SdzFviSMzrk8Kyku9" target="_blank" rel="noopener noreferrer">
                   <i class="bi bi-geo-alt-fill me-2"></i>Local de retirada
                 </a>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="glass-card p-4 p-lg-5 mt-4 reveal">
+        <section class="glass-card p-4 p-lg-5 mt-4 reveal section-card" aria-labelledby="infoTitle">
           <div class="text-center mb-4">
             <p class="sub-kicker mb-2">Informações</p>
-            <h2 class="section-title h1 mb-0">Dados do convite</h2>
+            <h2 id="infoTitle" class="section-title h1 mb-0">Dados do convite</h2>
           </div>
 
           <div class="row g-3 g-xl-4">
@@ -803,7 +1018,8 @@
             </div>
 
             <div class="col-12">
-              <a class="event-info-card event-info-featured d-block text-decoration-none" href="https://maps.app.goo.gl/SdzFviSMzrk8Kyku9" target="_blank" rel="noopener noreferrer">
+              <a class="event-info-card event-info-featured d-block text-decoration-none"
+                href="https://maps.app.goo.gl/SdzFviSMzrk8Kyku9" target="_blank" rel="noopener noreferrer">
                 <div class="row g-3 align-items-center">
                   <div class="col-lg">
                     <div class="event-info-head mb-2">
@@ -822,12 +1038,12 @@
               </a>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="glass-card p-4 p-lg-5 mt-4 reveal">
+        <section class="glass-card p-4 p-lg-5 mt-4 reveal section-card" aria-labelledby="halfTitle">
           <div class="text-center mb-4">
             <p class="sub-kicker mb-2">Meia entrada</p>
-            <h2 class="section-title h1 mb-0">Quem paga R$ 25,00</h2>
+            <h2 id="halfTitle" class="section-title h1 mb-0">Quem paga R$ 25,00</h2>
           </div>
 
           <div class="row g-3">
@@ -847,7 +1063,8 @@
                   <div class="info-icon"><i class="bi bi-stars"></i></div>
                   <span class="event-info-title">Crianças com TEA</span>
                 </div>
-                <p class="event-info-value">Crianças com Transtorno do Espectro Autista também pagam <strong>meia entrada</strong>.</p>
+                <p class="event-info-value">Crianças com Transtorno do Espectro Autista também pagam <strong>meia
+                    entrada</strong>.</p>
               </div>
             </div>
 
@@ -857,59 +1074,70 @@
                   <div class="info-icon"><i class="bi bi-universal-access-circle"></i></div>
                   <span class="event-info-title">Pessoas com deficiência - PcD</span>
                 </div>
-                <p class="event-info-value">Pessoas com deficiência pagam <strong>meia entrada</strong>, no valor de R$ 25,00.</p>
+                <p class="event-info-value">Pessoas com deficiência pagam <strong>meia entrada</strong>, no valor de R$
+                  25,00.</p>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         <div class="row g-4 mt-1 align-items-stretch">
           <div class="col-lg-7 reveal">
-            <div class="glass-card p-4 p-lg-5 h-100">
+            <section class="glass-card p-4 p-lg-5 h-100 quick-card" aria-labelledby="countdownTitle">
               <div class="d-flex flex-column flex-md-row justify-content-between gap-3 align-items-md-center mb-4">
                 <div>
                   <p class="sub-kicker mb-2">Contagem regressiva</p>
-                  <h2 class="section-title h1 mb-0">Faltam</h2>
+                  <h2 id="countdownTitle" class="section-title h1 mb-0">Faltam</h2>
                 </div>
                 <button type="button" class="btn btn-outline-warning rounded-pill px-4" id="shareButton">
                   <i class="bi bi-share me-2"></i>Compartilhar
                 </button>
               </div>
               <div class="d-flex flex-wrap gap-3" id="countdown" aria-live="polite">
-                <div class="countdown-box text-center"><span class="countdown-number" id="days">--</span><span class="countdown-label">dias</span></div>
-                <div class="countdown-box text-center"><span class="countdown-number" id="hours">--</span><span class="countdown-label">horas</span></div>
-                <div class="countdown-box text-center"><span class="countdown-number" id="minutes">--</span><span class="countdown-label">min</span></div>
-                <div class="countdown-box text-center"><span class="countdown-number" id="seconds">--</span><span class="countdown-label">seg</span></div>
+                <div class="countdown-box text-center"><span class="countdown-number" id="days">--</span><span
+                    class="countdown-label">dias</span></div>
+                <div class="countdown-box text-center"><span class="countdown-number" id="hours">--</span><span
+                    class="countdown-label">horas</span></div>
+                <div class="countdown-box text-center"><span class="countdown-number" id="minutes">--</span><span
+                    class="countdown-label">min</span></div>
+                <div class="countdown-box text-center"><span class="countdown-number" id="seconds">--</span><span
+                    class="countdown-label">seg</span></div>
               </div>
-            </div>
+            </section>
           </div>
 
           <div class="col-lg-5 reveal">
-            <div class="glass-card p-4 p-lg-5 h-100 d-flex flex-column justify-content-center">
+            <section class="glass-card p-4 p-lg-5 h-100 d-flex flex-column justify-content-center quick-card"
+              aria-labelledby="whatsappTitle">
               <p class="sub-kicker mb-2">Reserva rápida</p>
-              <h2 class="section-title h1 mb-3">WhatsApp</h2>
-              <p class="mb-3" style="color: var(--muted);">Clique no botão abaixo para abrir a conversa com a mensagem pronta e solicitar seu convite.</p>
+              <h2 id="whatsappTitle" class="section-title h1 mb-3">WhatsApp</h2>
+              <p class="mb-3" style="color: var(--muted);">Clique no botão abaixo para abrir a conversa com a mensagem
+                pronta e solicitar seu convite.</p>
               <div class="mb-4 small" style="color: var(--muted);">
-                <div><i class="bi bi-cash-coin me-2" style="color: var(--gold-2);"></i>Inteira: <strong>R$ 50,00</strong> | Meia: <strong>R$ 25,00</strong></div>
-                <div class="mt-2"><i class="bi bi-bag-check me-2" style="color: var(--gold-2);"></i>Retirada da pulseira: Escola de Música Camargo Guarnieri</div>
+                <div><i class="bi bi-cash-coin me-2" style="color: var(--gold-2);"></i>Inteira: <strong>R$
+                    50,00</strong> | Meia: <strong>R$ 25,00</strong></div>
+                <div class="mt-2"><i class="bi bi-bag-check me-2" style="color: var(--gold-2);"></i>Retirada da
+                  pulseira: Escola de Música Camargo Guarnieri</div>
               </div>
               <div class="d-grid gap-3">
                 <a class="btn btn-whatsapp btn-lg rounded-pill js-whatsapp" href="#">
                   <i class="bi bi-whatsapp me-2"></i>Reservar pelo WhatsApp
                 </a>
-                <a class="btn btn-outline-warning btn-lg rounded-pill" href="https://maps.app.goo.gl/SdzFviSMzrk8Kyku9" target="_blank" rel="noopener noreferrer">
+                <a class="btn btn-outline-warning btn-lg rounded-pill" href="https://maps.app.goo.gl/SdzFviSMzrk8Kyku9"
+                  target="_blank" rel="noopener noreferrer">
                   <i class="bi bi-geo-alt-fill me-2"></i>Local de retirada
                 </a>
                 <a class="btn btn-outline-light btn-lg rounded-pill" href="tel:+556436212607">
                   <i class="bi bi-telephone me-2"></i>Ligar: (64) 3621-2607
                 </a>
               </div>
-            </div>
+            </section>
           </div>
         </div>
 
-        <div class="glass-card p-4 p-lg-5 mt-4 reveal">
-          <p class="sub-kicker text-center mb-3">Apoio</p>
+        <section class="glass-card p-4 p-lg-5 mt-4 reveal section-card" aria-labelledby="supportTitle">
+          <p class="sub-kicker text-center mb-2">Apoio</p>
+          <h2 id="supportTitle" class="visually-hidden">Apoiadores do evento</h2>
           <div class="d-flex flex-wrap justify-content-center gap-3">
             <!-- Troque o caminho das imagens abaixo pelos arquivos reais dos apoiadores. -->
             <a class="support-logo logo-light" href="#" aria-label="MapleBear Canadian School">
@@ -917,24 +1145,27 @@
             </a>
 
             <a class="support-logo logo-transparent" href="#" aria-label="Camargo Guarnieri Escola de Música">
-              <img src="assets/img/apoiadores/camargo-guarnieri.png" alt="Camargo Guarnieri Escola de Música" loading="lazy">
+              <img src="assets/img/apoiadores/camargo-guarnieri.png" alt="Camargo Guarnieri Escola de Música"
+                loading="lazy">
             </a>
 
             <a class="support-logo logo-transparent" href="#" aria-label="Instituto Federal Goiano">
               <img src="assets/img/apoiadores/if-goiano.png" alt="Instituto Federal Goiano" loading="lazy">
             </a>
           </div>
-        </div>
+        </section>
 
-        <div class="footer-note text-center mt-4 pt-4 reveal">
-          <p class="font-cinzel text-uppercase mb-2" style="letter-spacing:.14em; color: var(--gold-2);">Uma noite mágica com o melhor do cinema</p>
+        <footer class="footer-note text-center mt-4 pt-4 reveal">
+          <p class="font-cinzel text-uppercase mb-2" style="letter-spacing:.14em; color: var(--gold-2);">Uma noite
+            mágica com o melhor do cinema</p>
           <p class="mb-0">Reserve pelo WhatsApp e retire sua pulseira na Escola de Música Camargo Guarnieri.</p>
-        </div>
+        </footer>
       </section>
-    </section>
+    </article>
   </main>
 
-  <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+  <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -949,20 +1180,24 @@
           <div class="modal-body">
             <div class="alert rounded-4 mb-3 total-box">
               <div><strong>Inteira:</strong> R$ 50,00 por pessoa.</div>
-              <div><strong>Meia entrada:</strong> R$ 25,00 para crianças menores de 10 anos, crianças com TEA e pessoas com deficiência - PcD.</div>
-              <div class="small mt-1" style="color: var(--muted);">A pulseira deve ser retirada na Escola de Música Camargo Guarnieri.</div>
+              <div><strong>Meia entrada:</strong> R$ 25,00 para crianças menores de 10 anos, crianças com TEA e pessoas
+                com deficiência - PcD.</div>
+              <div class="small mt-1" style="color: var(--muted);">A pulseira deve ser retirada na Escola de Música
+                Camargo Guarnieri.</div>
             </div>
 
             <div class="mb-3">
               <label for="guestName" class="form-label">Seu nome</label>
-              <input type="text" class="form-control form-control-lg rounded-4" id="guestName" placeholder="Digite seu nome" required>
+              <input type="text" class="form-control form-control-lg rounded-4" id="guestName"
+                placeholder="Digite seu nome" required>
             </div>
 
             <div class="row g-3 mb-3">
               <div class="col-md-6">
                 <div class="ticket-input-card h-100">
                   <label for="fullTicketQuantity" class="form-label">Convites inteiros</label>
-                  <input type="number" class="form-control form-control-lg rounded-4 ticket-quantity" id="fullTicketQuantity" min="0" step="1" inputmode="numeric" value="1">
+                  <input type="number" class="form-control form-control-lg rounded-4 ticket-quantity"
+                    id="fullTicketQuantity" min="0" step="1" inputmode="numeric" value="1">
                   <div class="small mt-2" style="color: var(--muted);">R$ 50,00 cada</div>
                 </div>
               </div>
@@ -970,7 +1205,8 @@
               <div class="col-md-6">
                 <div class="ticket-input-card h-100">
                   <label for="halfTicketQuantity" class="form-label">Meias entradas</label>
-                  <input type="number" class="form-control form-control-lg rounded-4 ticket-quantity" id="halfTicketQuantity" min="0" step="1" inputmode="numeric" value="0">
+                  <input type="number" class="form-control form-control-lg rounded-4 ticket-quantity"
+                    id="halfTicketQuantity" min="0" step="1" inputmode="numeric" value="0">
                   <div class="small mt-2" style="color: var(--muted);">R$ 25,00 cada</div>
                 </div>
               </div>
@@ -979,8 +1215,10 @@
             <div class="mb-3">
               <div class="alert rounded-4 mb-0 total-box">
                 <div class="d-flex flex-column gap-1">
-                  <div><strong>Inteiras:</strong> <span id="fullTicketLabel">1</span> × R$ 50,00 = <span id="fullTicketTotalLabel">R$ 50,00</span></div>
-                  <div><strong>Meias:</strong> <span id="halfTicketLabel">0</span> × R$ 25,00 = <span id="halfTicketTotalLabel">R$ 0,00</span></div>
+                  <div><strong>Inteiras:</strong> <span id="fullTicketLabel">1</span> × R$ 50,00 = <span
+                      id="fullTicketTotalLabel">R$ 50,00</span></div>
+                  <div><strong>Meias:</strong> <span id="halfTicketLabel">0</span> × R$ 25,00 = <span
+                      id="halfTicketTotalLabel">R$ 0,00</span></div>
                   <div><strong>Total de convites:</strong> <span id="totalTicketQuantityLabel">1</span></div>
                   <div><strong>Total:</strong> <span class="total-price" id="totalPriceLabel">R$ 50,00</span></div>
                 </div>
@@ -989,12 +1227,14 @@
 
             <div class="mb-0">
               <label for="guestNote" class="form-label">Observação opcional</label>
-              <textarea class="form-control rounded-4" id="guestNote" rows="3" placeholder="Ex.: vou retirar na secretaria"></textarea>
+              <textarea class="form-control rounded-4" id="guestNote" rows="3"
+                placeholder="Ex.: vou retirar na secretaria"></textarea>
             </div>
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-light rounded-pill px-4" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-outline-light rounded-pill px-4"
+              data-bs-dismiss="modal">Cancelar</button>
             <button type="submit" class="btn btn-whatsapp rounded-pill px-4">
               <i class="bi bi-whatsapp me-2"></i>Abrir WhatsApp
             </button>
@@ -1021,7 +1261,7 @@
           para o número cadastrado no array abaixo.
 
         Exemplo:
-        https://renison-f.github.io/convite-evento/?vendedor=joao
+        https://camargo-guarnieri.github.io/evento/?vendedor=joao
 
         Para adicionar vendedor:
         1. Copie um bloco dentro do array sellers.
@@ -1230,6 +1470,82 @@
         return " Vim pelo convite do(a) vendedor(a) " + activeSeller.name + ".";
       }
 
+      function getPickupInfo() {
+        if (activeSeller.isOfficial) {
+          return {
+            hasMap: true,
+            title: "Retirada da pulseira",
+            primary: pickupPlace,
+            secondary: pickupAddress,
+            summaryLine: "Retirada da pulseira: " + pickupPlace,
+            modalLine: "A pulseira deve ser retirada na " + pickupPlace + ".",
+            footerLine: "Reserve pelo WhatsApp e retire sua pulseira na Escola de Música Camargo Guarnieri.",
+            messageLine: " Retirada da pulseira em " + pickupPlace + ", no endereço: " + pickupAddress + ". Localização da retirada: " + pickupMapsUrl + "."
+          };
+        }
+
+        return {
+          hasMap: false,
+          title: "Retirada com o vendedor",
+          primary: "Diretamente com " + activeSeller.name,
+          secondary: "Combine a entrega da pulseira pelo WhatsApp do vendedor responsável.",
+          summaryLine: "Retirada da pulseira: diretamente com " + activeSeller.name,
+          modalLine: "A pulseira deve ser retirada diretamente com " + activeSeller.name + ". Combine a entrega pelo WhatsApp do vendedor responsável.",
+          footerLine: "Reserve pelo WhatsApp e retire sua pulseira diretamente com " + activeSeller.name + ".",
+          messageLine: " A pulseira deve ser retirada diretamente com " + activeSeller.name + ". Combine a entrega pelo WhatsApp do vendedor responsável."
+        };
+      }
+
+      function getPickupMessageLine() {
+        return getPickupInfo().messageLine;
+      }
+
+      function renderPickupRules() {
+        const pickup = getPickupInfo();
+        const $pickupCard = $('a.event-info-card[href="' + pickupMapsUrl + '"]').first();
+
+        if ($pickupCard.length) {
+          $pickupCard.find(".event-info-title").text(pickup.title);
+          $pickupCard.find(".event-info-value").eq(0).text(pickup.primary);
+          $pickupCard.find(".event-info-value").eq(1).text(pickup.secondary);
+
+          if (pickup.hasMap) {
+            $pickupCard.attr({
+              href: pickupMapsUrl,
+              target: "_blank",
+              rel: "noopener noreferrer"
+            });
+            $pickupCard.css("cursor", "pointer");
+          } else {
+            $pickupCard.removeAttr("href target rel");
+            $pickupCard.css("cursor", "default");
+            $pickupCard.find(".col-lg-auto").remove();
+          }
+        }
+
+        if (!pickup.hasMap) {
+          $('a[href="' + pickupMapsUrl + '"]').not($pickupCard).addClass("d-none").attr("aria-hidden", "true");
+        }
+
+        const $quickWhatsAppCard = $(".btn-whatsapp.js-whatsapp").closest(".glass-card").first();
+
+        if ($quickWhatsAppCard.length) {
+          $quickWhatsAppCard.find(".bi-bag-check").parent().html(
+            '<i class="bi bi-bag-check me-2" style="color: var(--gold-2);"></i>' + escapeHtml(pickup.summaryLine)
+          );
+        }
+
+        const $modalTicketAlert = $("#reservationForm .modal-body .total-box").filter(function () {
+          return $(this).text().indexOf("Inteira:") !== -1;
+        }).first();
+
+        if ($modalTicketAlert.length) {
+          $modalTicketAlert.find(".small").first().text(pickup.modalLine);
+        }
+
+        $(".footer-note p.mb-0").text(pickup.footerLine);
+      }
+
       function copyTextToClipboard(text, callback) {
         if (navigator.clipboard && window.isSecureContext) {
           navigator.clipboard.writeText(text).then(function () {
@@ -1303,10 +1619,8 @@
           ", no " + eventPlace +
           ". Valores: " + ticketPriceText +
           ". " + halfTicketRules +
-          ". Local do evento: " + eventMapsUrl +
-          ". Retirada da pulseira em " + pickupPlace +
-          ", no endereço: " + pickupAddress +
-          ". Localização da retirada: " + pickupMapsUrl + ".";
+          ". Local do evento: " + eventMapsUrl + "." +
+          getPickupMessageLine();
       }
 
       $(".js-whatsapp").on("click", function (event) {
@@ -1344,9 +1658,7 @@
           " Total estimado: " + formatCurrency(summary.totalValue) + "." +
           " Regra da meia entrada: " + halfTicketRules + "." +
           " Local do evento: " + eventPlace + " (" + eventMapsUrl + ")." +
-          " A pulseira deve ser retirada na " + pickupPlace +
-          ", no endereço: " + pickupAddress +
-          ". Localização da retirada: " + pickupMapsUrl + ".";
+          getPickupMessageLine();
 
         if (!activeSeller.isOfficial) {
           message += " Vendedor responsável: " + activeSeller.name + ".";
@@ -1372,21 +1684,21 @@
 
         const sellerText = activeSeller.isOfficial
           ? "As reservas serão direcionadas para o WhatsApp oficial do evento."
-          : "As reservas deste link serão direcionadas para o WhatsApp de " + activeSeller.name + ".";
+          : "As reservas deste link serão direcionadas para o WhatsApp de " + activeSeller.name + ". A retirada da pulseira será combinada diretamente com este vendedor.";
 
         const sellerHtml =
           '<div class="alert rounded-4 mb-4 total-box seller-info-box">' +
-            '<div class="d-flex align-items-start gap-3">' +
-              '<div class="info-icon" style="width:42px;height:42px;flex:0 0 42px;font-size:1.1rem;">' +
-                '<i class="bi bi-person-badge"></i>' +
-              '</div>' +
-              '<div>' +
-                '<div class="small text-uppercase fw-bold" style="letter-spacing:.08em;color:var(--gold-2);">' + escapeHtml(sellerTitle) + '</div>' +
-                '<div class="fw-bold">' + escapeHtml(activeSeller.name) + '</div>' +
-                '<div class="small" style="color:var(--muted);">' + escapeHtml(sellerText) + '</div>' +
-                '<div class="small mt-1" style="color:var(--muted);"><i class="bi bi-whatsapp me-1"></i>' + escapeHtml(activeSeller.phoneLabel) + '</div>' +
-              '</div>' +
-            '</div>' +
+          '<div class="d-flex align-items-start gap-3">' +
+          '<div class="info-icon" style="width:42px;height:42px;flex:0 0 42px;font-size:1.1rem;">' +
+          '<i class="bi bi-person-badge"></i>' +
+          '</div>' +
+          '<div>' +
+          '<div class="small text-uppercase fw-bold" style="letter-spacing:.08em;color:var(--gold-2);">' + escapeHtml(sellerTitle) + '</div>' +
+          '<div class="fw-bold">' + escapeHtml(activeSeller.name) + '</div>' +
+          '<div class="small" style="color:var(--muted);">' + escapeHtml(sellerText) + '</div>' +
+          '<div class="small mt-1" style="color:var(--muted);"><i class="bi bi-whatsapp me-1"></i>' + escapeHtml(activeSeller.phoneLabel) + '</div>' +
+          '</div>' +
+          '</div>' +
           '</div>';
 
         const $quickWhatsAppCard = $(".btn-whatsapp.js-whatsapp").closest(".glass-card").first();
@@ -1397,8 +1709,8 @@
 
         const modalSellerHtml =
           '<div class="alert rounded-4 total-box mb-3 seller-modal-box">' +
-            '<strong>Destino da reserva:</strong> ' + escapeHtml(activeSeller.name) +
-            '<div class="small mt-1" style="color:var(--muted);">O WhatsApp será aberto diretamente para este contato.</div>' +
+          '<strong>Destino da reserva:</strong> ' + escapeHtml(activeSeller.name) +
+          '<div class="small mt-1" style="color:var(--muted);">O WhatsApp será aberto diretamente para este contato.</div>' +
           '</div>';
 
         const $modalBody = $("#reservationForm .modal-body");
@@ -1410,8 +1722,8 @@
         if (sellerWasRequested && !sellerWasFound) {
           const warningHtml =
             '<div class="alert rounded-4 total-box mb-4 seller-warning-box">' +
-              '<strong>Vendedor não encontrado:</strong> ' + escapeHtml(requestedSellerSlug) +
-              '<div class="small mt-1" style="color:var(--muted);">A reserva será direcionada para o atendimento oficial do evento.</div>' +
+            '<strong>Vendedor não encontrado:</strong> ' + escapeHtml(requestedSellerSlug) +
+            '<div class="small mt-1" style="color:var(--muted);">A reserva será direcionada para o atendimento oficial do evento.</div>' +
             '</div>';
 
           $("section.container-fluid.px-3.px-lg-5.pb-5").prepend(warningHtml);
@@ -1438,7 +1750,7 @@
         ============================================================
 
         Acesse:
-        https://renison-f.github.io/convite-evento/?admin=vendedores
+        https://camargo-guarnieri.github.io/evento/?admin=vendedores
       */
 
       function renderSellerLinksPanel() {
@@ -1455,32 +1767,32 @@
 
           return '' +
             '<div class="ticket-input-card mb-3">' +
-              '<div class="row g-3 align-items-center">' +
-                '<div class="col-lg-3">' +
-                  '<div class="fw-bold" style="color:var(--gold-2);">' + escapeHtml(seller.name) + '</div>' +
-                  '<div class="small" style="color:var(--muted);">' + escapeHtml(seller.phoneLabel) + '</div>' +
-                  '<div class="small" style="color:var(--muted);">Slug: ' + escapeHtml(seller.slug) + '</div>' +
-                '</div>' +
-                '<div class="col-lg">' +
-                  '<input type="text" class="form-control rounded-4 seller-link-input" value="' + escapeHtml(link) + '" readonly>' +
-                '</div>' +
-                '<div class="col-lg-auto">' +
-                  '<button type="button" class="btn btn-outline-warning rounded-pill px-4 js-copy-seller-link" data-link="' + escapeHtml(link) + '">' +
-                    '<i class="bi bi-clipboard me-2"></i>Copiar link' +
-                  '</button>' +
-                '</div>' +
-              '</div>' +
+            '<div class="row g-3 align-items-center">' +
+            '<div class="col-lg-3">' +
+            '<div class="fw-bold" style="color:var(--gold-2);">' + escapeHtml(seller.name) + '</div>' +
+            '<div class="small" style="color:var(--muted);">' + escapeHtml(seller.phoneLabel) + '</div>' +
+            '<div class="small" style="color:var(--muted);">Slug: ' + escapeHtml(seller.slug) + '</div>' +
+            '</div>' +
+            '<div class="col-lg">' +
+            '<input type="text" class="form-control rounded-4 seller-link-input" value="' + escapeHtml(link) + '" readonly>' +
+            '</div>' +
+            '<div class="col-lg-auto">' +
+            '<button type="button" class="btn btn-outline-warning rounded-pill px-4 js-copy-seller-link" data-link="' + escapeHtml(link) + '">' +
+            '<i class="bi bi-clipboard me-2"></i>Copiar link' +
+            '</button>' +
+            '</div>' +
+            '</div>' +
             '</div>';
         }).join("");
 
         const panelHtml =
           '<div class="glass-card p-4 p-lg-5 mt-4 mb-4 reveal is-visible" id="sellerLinksPanel">' +
-            '<div class="text-center mb-4">' +
-              '<p class="sub-kicker mb-2">Controle interno</p>' +
-              '<h2 class="section-title h1 mb-0">Links dos vendedores</h2>' +
-              '<p class="mt-3 mb-0" style="color:var(--muted);">Copie o link de cada vendedor e envie individualmente para divulgação.</p>' +
-            '</div>' +
-            sellerRows +
+          '<div class="text-center mb-4">' +
+          '<p class="sub-kicker mb-2">Controle interno</p>' +
+          '<h2 class="section-title h1 mb-0">Links dos vendedores</h2>' +
+          '<p class="mt-3 mb-0" style="color:var(--muted);">Copie o link de cada vendedor e envie individualmente para divulgação.</p>' +
+          '</div>' +
+          sellerRows +
           '</div>';
 
         $("section.container-fluid.px-3.px-lg-5.pb-5").prepend(panelHtml);
@@ -1584,7 +1896,7 @@
         if (navigator.share) {
           try {
             await navigator.share(shareData);
-          } catch (error) {}
+          } catch (error) { }
         } else {
           const $button = $("#shareButton");
           const originalText = $button.html();
@@ -1606,6 +1918,7 @@
       */
 
       renderSellerInfo();
+      renderPickupRules();
       renderSellerLinksPanel();
 
       updateCountdown();
@@ -1619,4 +1932,5 @@
   </script>
 
 </body>
+
 </html>
