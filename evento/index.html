@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#09070f">
+  <meta name="theme-color" content="#05030a">
   <meta name="description"
     content="Convite interativo para o Tributo da Orquestra Sinfônica Camargo Guarnieri. Reserve seu convite pelo WhatsApp.">
-  <title>Tributo | OSCG</title>
+  <title>Tributo | Orquestra Sinfônica Camargo Guarnieri</title>
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Great+Vibes&family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
 
   <style>
@@ -226,7 +226,7 @@
       background: rgba(255, 255, 255, .06);
       color: var(--color-gold-light);
       font-family: var(--font-title);
-      font-size: clamp(.78rem, 1vw, .95rem);
+      /* font-size: clamp(.78rem, 1vw, .95rem); */
       font-weight: 700;
       letter-spacing: .035em;
       backdrop-filter: blur(8px);
@@ -253,7 +253,6 @@
       font-family: var(--font-title);
       font-size: clamp(3rem, 8.2vw, 6.6rem);
       font-weight: 900;
-      line-height: .92;
       letter-spacing: .06em;
       filter: drop-shadow(0 10px 18px rgba(0, 0, 0, .65));
       animation: titleGlow 3.4s ease-in-out infinite alternate;
@@ -902,6 +901,617 @@
         transition-duration: .001ms !important;
       }
     }
+
+    /* ==========================================================
+       TEMA CARTAZ CINEMATOGRÁFICO
+       Mantém o layout original e melhora a estética sem usar
+       imagem de fundo nem simular a orquestra/coral do cartaz.
+       ========================================================== */
+
+    :root {
+      --color-page: #05030a;
+      --color-page-top: #06172f;
+      --color-page-end: #030203;
+      --color-gold: #d99a36;
+      --color-gold-light: #ffe39b;
+      --color-gold-dark: #7a430b;
+      --color-cream: #fff1cf;
+      --color-muted: #d7ba7c;
+      --color-card: rgba(9, 7, 11, .82);
+      --color-card-soft: rgba(255, 221, 144, .07);
+      --color-border: rgba(255, 220, 145, .28);
+      --color-border-strong: rgba(255, 218, 130, .86);
+      --shadow-frame: 0 30px 90px rgba(0, 0, 0, .58);
+      --shadow-card: 0 22px 58px rgba(0, 0, 0, .34);
+      --radius-frame: 14px;
+      --radius-card: 20px;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 18% 9%, rgba(54, 119, 178, .42), transparent 28%),
+        radial-gradient(circle at 82% 10%, rgba(255, 189, 76, .20), transparent 25%),
+        radial-gradient(circle at 50% 42%, rgba(87, 43, 11, .20), transparent 34%),
+        linear-gradient(180deg, #06172f 0%, #060711 44%, #050203 100%);
+    }
+
+    body::before {
+      background-image:
+        radial-gradient(circle, rgba(255, 255, 255, .92) 0 1px, transparent 1.6px),
+        radial-gradient(circle, rgba(255, 218, 124, .88) 0 1px, transparent 1.45px),
+        linear-gradient(52deg, transparent 0 49.75%, rgba(255, 217, 131, .16) 50%, transparent 50.25%),
+        linear-gradient(132deg, transparent 0 49.75%, rgba(255, 217, 131, .12) 50%, transparent 50.25%);
+      background-size: 110px 110px, 170px 170px, 260px 160px, 230px 190px;
+      background-position: 0 0, 38px 68px, 0 12px, 90px 30px;
+      opacity: .78;
+    }
+
+    body::after {
+      background:
+        linear-gradient(90deg, rgba(217, 154, 54, .13), transparent 20%, transparent 80%, rgba(217, 154, 54, .13)),
+        radial-gradient(circle at center, transparent 0 38%, rgba(0, 0, 0, .54) 100%);
+    }
+
+    .page-shell {
+      padding: clamp(12px, 2.3vw, 30px);
+    }
+
+    .invitation {
+      width: min(1120px, 100%);
+      border: 2px solid var(--color-border-strong);
+      border-radius: var(--radius-frame);
+      outline: 6px double rgba(217, 154, 54, .48);
+      background:
+        radial-gradient(circle at 50% 4%, rgba(84, 155, 214, .28), transparent 23%),
+        radial-gradient(circle at 50% 62%, rgba(133, 63, 12, .22), transparent 36%),
+        linear-gradient(180deg, rgba(6, 19, 42, .96) 0%, rgba(7, 8, 15, .96) 36%, rgba(37, 14, 4, .94) 100%);
+      box-shadow:
+        var(--shadow-frame),
+        inset 0 0 0 1px rgba(255, 238, 178, .18),
+        inset 0 0 90px rgba(255, 189, 76, .08);
+    }
+
+    .invitation::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      z-index: 2;
+      border: 1px solid rgba(255, 228, 158, .72);
+      border-radius: calc(var(--radius-frame) - 6px);
+      box-shadow:
+        inset 0 0 0 1px rgba(105, 58, 13, .62),
+        inset 0 0 34px rgba(255, 214, 123, .08);
+      opacity: 1;
+      pointer-events: none;
+    }
+
+    /* .invitation::after {
+      content: "❦";
+      top: 12px;
+      right: auto;
+      left: 50%;
+      z-index: 3;
+      width: auto;
+      height: auto;
+      color: var(--color-gold-light);
+      font-family: "Great Vibes", var(--font-display);
+      font-size: clamp(2.6rem, 7vw, 5.6rem);
+      line-height: .55;
+      opacity: .84;
+      text-shadow: 0 0 18px rgba(255, 205, 91, .54), 0 5px 10px rgba(0, 0, 0, .80);
+      transform: translateX(-50%);
+      pointer-events: none;
+    } */
+
+    .stage-light {
+      top: -190px;
+      width: clamp(180px, 24vw, 285px);
+      height: 760px;
+      opacity: .28;
+      background:
+        radial-gradient(ellipse at top, rgba(255, 255, 255, .62), rgba(255, 244, 213, .20) 28%, transparent 64%);
+    }
+
+    .stage-light--left {
+      left: -34px;
+      transform: rotate(143deg);
+    }
+
+    .stage-light--right {
+      right: -34px;
+      transform: rotate(-143deg);
+    }
+
+    .hero {
+      padding:
+        clamp(3.2rem, 6vw, 5.3rem) clamp(1.1rem, 4.4vw, 3.6rem) clamp(2.1rem, 4vw, 3.4rem);
+      background:
+        linear-gradient(180deg, rgba(4, 17, 39, .32), rgba(0, 0, 0, 0) 64%),
+        radial-gradient(ellipse at 50% 100%, rgba(232, 166, 61, .12), transparent 54%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: clamp(1.4rem, 4vw, 3rem);
+      right: clamp(1.4rem, 4vw, 3rem);
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 220, 145, .72), transparent);
+    }
+
+    .composer-list {
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      align-items: start !important;
+      max-width: 940px;
+      margin: 0 auto clamp(1rem, 2.2vw, 1.55rem);
+      gap: .75rem 1rem;
+    }
+
+    .composer-list>[class*="col-"] {
+      width: auto !important;
+      max-width: none !important;
+      flex: 0 0 auto !important;
+      padding: 0;
+    }
+
+    .composer-pill {
+      width: 100%;
+      min-height: auto;
+      padding: .16rem .25rem;
+      border: 0;
+      border-radius: 0;
+      color: var(--color-gold-light);
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      /* font-size: clamp(.82rem, 1.55vw, 1.22rem); */
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      text-shadow:
+        0 2px 0 rgba(43, 19, 2, .95),
+        0 0 13px rgba(255, 197, 82, .35);
+    }
+
+    .composer-pill:hover {
+      border-color: transparent;
+      background: transparent;
+      transform: translateY(-2px);
+    }
+
+    .eyebrow {
+      color: var(--color-gold-light);
+      letter-spacing: .18em;
+      text-shadow: 0 2px 0 rgba(0, 0, 0, .65);
+    }
+
+    .hero-title {
+      position: relative;
+      display: inline-block;
+      font-size: clamp(3.6rem, 9.3vw, 7.4rem);
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      -webkit-text-stroke: 1px rgba(255, 236, 173, .46);
+      filter:
+        drop-shadow(0 7px 0 rgba(36, 14, 0, .96)) drop-shadow(0 16px 15px rgba(0, 0, 0, .82));
+    }
+
+    .hero-title.text-gradient-gold {
+      background:
+        linear-gradient(180deg,
+          #fff8d2 0%,
+          #ffd374 20%,
+          #9e5510 45%,
+          #4b1d04 53%,
+          #f0a33c 69%,
+          #fff0b8 84%,
+          #89500f 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    /* .hero-title::after {
+      content: "";
+      position: absolute;
+      left: 7%;
+      right: 12%;
+      top: 9%;
+      height: 16%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .58), transparent);
+      opacity: .48;
+      transform: skewX(-18deg);
+      pointer-events: none;
+    } */
+
+    .ornament-line {
+      max-width: 600px;
+      margin-top: .45rem;
+      margin-bottom: .4rem;
+      color: var(--color-gold-light);
+      filter: drop-shadow(0 0 10px rgba(255, 199, 88, .38));
+    }
+
+    .ornament-line::before,
+    .ornament-line::after {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, currentColor);
+    }
+
+    .ornament-line::after {
+      background: linear-gradient(90deg, currentColor, transparent);
+    }
+
+    .ornament-line i::before {
+      content: "❦";
+      font-family: "Great Vibes", var(--font-display);
+      font-style: normal;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: .45;
+    }
+
+    .glass-card {
+      border: 1px solid rgba(255, 220, 145, .30);
+      background:
+        linear-gradient(180deg, rgba(12, 9, 14, .86), rgba(20, 10, 6, .82)),
+        radial-gradient(circle at 50% 0, rgba(255, 215, 125, .10), transparent 34%);
+      box-shadow:
+        var(--shadow-card),
+        inset 0 0 0 1px rgba(255, 244, 204, .055),
+        inset 0 0 42px rgba(255, 196, 86, .045);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-card-grid {
+      max-width: 960px;
+      margin-inline: auto;
+    }
+
+    .event-card {
+      color: #211205;
+      border: 7px double #915817;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 50% 3%, rgba(255, 255, 255, .70), transparent 25%),
+        linear-gradient(135deg, #fff4cf, #d0a25e 52%, #fff1c8);
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, .45),
+        inset 0 0 0 1px rgba(255, 249, 218, .52),
+        inset 0 0 30px rgba(69, 34, 3, .18);
+    }
+
+    /* .event-card::before,
+    .event-card::after {
+      content: "❦";
+      position: absolute;
+      left: 50%;
+      color: #8b5518;
+      font-family: "Great Vibes", var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      line-height: .5;
+      opacity: .84;
+      transform: translateX(-50%);
+      pointer-events: none;
+    } */
+
+    .event-card::before {
+      top: .9rem;
+    }
+
+    .event-card::after {
+      bottom: 4.05rem;
+      transform: translateX(-50%) rotate(180deg);
+    }
+
+    .event-card__date {
+      font-family: "Libre Baskerville", var(--font-display);
+      font-size: clamp(2.15rem, 4.8vw, 3.65rem);
+      color: #1a0f04;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .48);
+    }
+
+    .event-card__place,
+    .event-card__time {
+      color: #1f1205;
+      letter-spacing: .02em;
+    }
+
+    .event-location-badge {
+      bottom: 15px;
+      color: #ffe5a0;
+      border-color: rgba(255, 224, 145, .62);
+      background: linear-gradient(180deg, rgba(45, 24, 7, .95), rgba(15, 9, 5, .96));
+      box-shadow: 0 11px 24px rgba(0, 0, 0, .30);
+    }
+
+    .brand-card {
+      border: 2px solid rgba(255, 220, 145, .56);
+      outline: 3px double rgba(217, 154, 54, .30);
+      background:
+        radial-gradient(circle at 50% 14%, rgba(255, 219, 132, .16), transparent 34%),
+        linear-gradient(180deg, rgba(8, 7, 13, .92), rgba(35, 14, 5, .82));
+    }
+
+    .brand-monogram {
+      margin-bottom: .3rem;
+      font-family: "Great Vibes", var(--font-display);
+      font-size: clamp(4.8rem, 10vw, 7.2rem);
+      line-height: .72;
+      letter-spacing: -.05em;
+      background:
+        linear-gradient(180deg, #fff8d9, #e7aa45 48%, #6d3307 55%, #fff0bd 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-stroke: 1px rgba(255, 236, 180, .35);
+      filter: drop-shadow(0 9px 12px rgba(0, 0, 0, .80));
+    }
+
+    .brand-card .section-title {
+      margin-top: .15rem;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      color: var(--color-gold-light);
+      text-shadow: 0 2px 0 rgba(0, 0, 0, .68), 0 0 13px rgba(255, 198, 91, .16);
+    }
+
+    .content-sections {
+      position: relative;
+      z-index: 3;
+    }
+
+    .section-card,
+    .quick-card {
+      border-radius: var(--radius-card);
+    }
+
+    .info-card,
+    .benefit-card {
+      border-color: rgba(255, 220, 145, .24);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 221, 144, .035));
+    }
+
+    .info-card:hover,
+    .support-logo:hover {
+      transform: translateY(-4px);
+    }
+
+    .info-card__icon {
+      color: #1b1106;
+      border-color: rgba(255, 228, 160, .55);
+      background: linear-gradient(180deg, #ffe6a3, #c07a22);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, .24);
+    }
+
+    .countdown__item {
+      border-color: rgba(255, 220, 145, .30);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .075), rgba(255, 221, 144, .045));
+    }
+
+    .countdown__number {
+      text-shadow: 0 2px 0 rgba(0, 0, 0, .58);
+    }
+
+    .btn-gold {
+      --bs-btn-bg: #f2bd5e;
+      --bs-btn-border-color: #f2bd5e;
+      --bs-btn-hover-bg: #ffe2a3;
+      --bs-btn-hover-border-color: #ffe2a3;
+      --bs-btn-active-bg: #c87925;
+      --bs-btn-active-border-color: #c87925;
+      box-shadow: 0 14px 30px rgba(242, 189, 94, .25), inset 0 1px 0 rgba(255, 255, 255, .42);
+    }
+
+    .btn-outline-warning {
+      --bs-btn-color: #ffe39b;
+      --bs-btn-border-color: rgba(255, 227, 155, .72);
+      --bs-btn-hover-color: #170d04;
+      --bs-btn-hover-bg: #ffe39b;
+      --bs-btn-hover-border-color: #ffe39b;
+    }
+
+    .support-logo {
+      width: min(245px, 100%);
+      min-height: 130px;
+      aspect-ratio: 16 / 9;
+      padding: clamp(14px, 2vw, 22px);
+      color: var(--color-cream);
+      border: 1px solid rgba(255, 220, 145, .20);
+      background:
+        radial-gradient(circle at 50% 0, rgba(255, 220, 145, .10), transparent 48%),
+        rgba(255, 255, 255, .045);
+      box-shadow:
+        0 14px 34px rgba(0, 0, 0, .22),
+        inset 0 0 24px rgba(255, 213, 124, .035);
+      text-decoration: none;
+    }
+
+    .support-logo img {
+      max-width: 200px;
+      max-height: 100px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 15px rgba(0, 0, 0, .35));
+    }
+
+    .support-logo__fallback {
+      display: block;
+      color: var(--color-gold-light);
+      font-family: var(--font-title);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 0 rgba(0, 0, 0, .70);
+    }
+
+    .footer-note {
+      max-width: 980px;
+      margin-inline: auto;
+      color: var(--color-muted);
+      border-top: 3px double rgba(255, 220, 145, .30);
+    }
+
+    .footer-note .font-cinzel {
+      letter-spacing: .10em;
+      text-shadow: 0 2px 0 rgba(0, 0, 0, .72);
+    }
+
+    .poster-contact-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: .65rem 1.5rem;
+      color: var(--color-gold-light);
+      font-family: "Libre Baskerville", var(--font-display);
+      font-size: clamp(1rem, 2.2vw, 1.55rem);
+      text-shadow: 0 2px 0 rgba(0, 0, 0, .78);
+    }
+
+    .poster-contact-line a {
+      color: inherit;
+      text-decoration: none;
+      transition: color .22s ease, transform .22s ease;
+    }
+
+    .poster-contact-line a:hover {
+      color: #fff7d0;
+      transform: translateY(-2px);
+    }
+
+    .floating-whatsapp {
+      border: 1px solid rgba(255, 255, 255, .25);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .44), 0 0 0 7px rgba(31, 157, 85, .12);
+    }
+
+    .modal-content {
+      border: 2px solid rgba(255, 220, 145, .34);
+      background:
+        radial-gradient(circle at 50% 0, rgba(255, 214, 120, .12), transparent 30%),
+        linear-gradient(180deg, rgba(11, 8, 14, .99), rgba(34, 15, 7, .99));
+      box-shadow: 0 30px 90px rgba(0, 0, 0, .62);
+    }
+
+    .message-box {
+      background:
+        linear-gradient(180deg, rgba(242, 189, 94, .13), rgba(255, 255, 255, .045));
+    }
+
+    .ticket-input-card {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .065), rgba(255, 221, 144, .04));
+    }
+
+    @media (min-width: 992px) {
+      .composer-list li:nth-child(1) {
+        text-align: left;
+      }
+
+      .composer-list li:nth-child(2) {
+        order: 4;
+        text-align: right;
+      }
+
+      .composer-list li:nth-child(3) {
+        order: 2;
+      }
+
+      .composer-list li:nth-child(4) {
+        order: 3;
+      }
+
+      .hero-card-grid .event-card,
+      .hero-card-grid .brand-card {
+        min-height: clamp(330px, 29vw, 390px);
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .invitation::before {
+        inset: 8px;
+      }
+
+      .invitation::after {
+        top: 9px;
+        font-size: 3.1rem;
+      }
+
+      .hero {
+        padding: 3.1rem 1rem 1.55rem;
+      }
+
+      .composer-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-bottom: 1rem;
+      }
+
+      .composer-pill {
+        font-size: clamp(.78rem, 3.8vw, 1.05rem);
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 17vw, 4.9rem);
+      }
+
+      .event-card {
+        border-width: 5px;
+      }
+
+      .event-card::before {
+        top: .55rem;
+      }
+
+      .event-card::after {
+        bottom: 4rem;
+      }
+
+      .brand-monogram {
+        font-size: clamp(4.1rem, 20vw, 6rem);
+      }
+
+      .support-logo {
+        width: min(260px, 100%);
+        min-height: 96px;
+        aspect-ratio: 16 / 7;
+      }
+
+      .support-logo img {
+        max-height: 72px;
+      }
+
+      .poster-contact-line {
+        flex-direction: column;
+        gap: .45rem;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .page-shell {
+        padding: .55rem;
+      }
+
+      .hero-title {
+        letter-spacing: .035em;
+      }
+
+      .composer-list {
+        gap: .5rem;
+      }
+
+      .event-card__date {
+        font-size: clamp(2rem, 11vw, 2.75rem);
+      }
+
+      .event-card__place,
+      .event-card__time {
+        font-size: clamp(1.1rem, 6.6vw, 1.55rem);
+      }
+    }
   </style>
 </head>
 
@@ -925,10 +1535,10 @@
                 <li class="col-6 col-md-auto"><span class="composer-pill">Hans Zimmer</span></li>
                 <li class="col-6 col-md-auto"><span class="composer-pill">John Williams</span></li>
                 <li class="col-6 col-md-auto"><span class="composer-pill">Alan Silvestri</span></li>
-              </ul>
-              <p class="eyebrow mb-2 reveal">Uma noite mágica com o melhor do cinema</p>
+              </ul>              
               <h1 class="hero-title text-gradient-gold reveal" id="eventTitle">Tributo</h1>
-              <div class="ornament-line reveal" aria-hidden="true"><i class="bi bi-music-note-beamed fs-2"></i></div>
+              <!-- <p class="eyebrow mb-2 reveal">Uma noite mágica com o melhor do cinema</p> -->
+              <div class="ornament-line reveal" aria-hidden="true">Uma noite mágica com o melhor do cinema</div>
             </div>
 
             <div class="col-12 order-1 mt-0">
@@ -952,7 +1562,7 @@
                   <section
                     class="glass-card brand-card h-100 p-4 p-lg-5 text-center d-flex flex-column justify-content-center"
                     aria-labelledby="brandTitle">
-                    <div class="brand-monogram" aria-hidden="true">OSCG</div>
+                    <div class="brand-monogram" aria-hidden="true">CG</div>
                     <h2 class="section-title h3 mb-2" id="brandTitle">Orquestra Sinfônica</h2>
                     <p class="font-cinzel text-uppercase mb-4 text-gold-soft">Camargo Guarnieri</p>
                     <button class="btn btn-gold btn-lg rounded-pill px-4 pulse-cta" type="button" data-bs-toggle="modal"
@@ -1157,16 +1767,22 @@
           <h2 class="visually-hidden" id="supportTitle">Apoiadores do evento</h2>
           <div class="d-flex flex-wrap justify-content-center gap-3">
             <a class="support-logo" href="#" aria-label="MapleBear Canadian School">
-              <img src="assets/img/apoiadores/maplebear.png" alt="MapleBear Canadian School" loading="lazy" width="180"
-                height="180">
+              <img class="support-logo__image" src="assets/img/apoiadores/maplebear.png" alt="MapleBear Canadian School"
+                loading="lazy" width="180" height="180"
+                onerror="this.classList.add('is-hidden'); this.nextElementSibling.classList.remove('is-hidden');">
+              <span class="support-logo__fallback is-hidden">MapleBear<br>Canadian School</span>
             </a>
             <a class="support-logo" href="#" aria-label="Camargo Guarnieri Escola de Música">
-              <img src="assets/img/apoiadores/camargo-guarnieri.png" alt="Camargo Guarnieri Escola de Música"
-                loading="lazy" width="180" height="180">
+              <img class="support-logo__image" src="assets/img/apoiadores/camargo-guarnieri.png"
+                alt="Camargo Guarnieri Escola de Música" loading="lazy" width="180" height="180"
+                onerror="this.classList.add('is-hidden'); this.nextElementSibling.classList.remove('is-hidden');">
+              <span class="support-logo__fallback is-hidden">Camargo Guarnieri<br>Escola de Música</span>
             </a>
             <a class="support-logo" href="#" aria-label="Instituto Federal Goiano">
-              <img src="assets/img/apoiadores/if-goiano.png" alt="Instituto Federal Goiano" loading="lazy" width="180"
-                height="180">
+              <img class="support-logo__image" src="assets/img/apoiadores/if-goiano.png" alt="Instituto Federal Goiano"
+                loading="lazy" width="180" height="180"
+                onerror="this.classList.add('is-hidden'); this.nextElementSibling.classList.remove('is-hidden');">
+              <span class="support-logo__fallback is-hidden">Instituto Federal<br>Goiano</span>
             </a>
           </div>
         </section>
@@ -1175,6 +1791,14 @@
           <p class="font-cinzel text-uppercase mb-2 text-gold-soft">Uma noite mágica com o melhor do cinema</p>
           <p class="mb-0" data-js="footerPickupLine">Reserve pelo WhatsApp e retire sua pulseira na Escola de Música
             Camargo Guarnieri.</p>
+          <address class="poster-contact-line mt-3" aria-label="Contatos do evento">
+            <a href="tel:+556436212607">
+              <i class="bi bi-telephone-fill me-2" aria-hidden="true"></i>(64) 3621-2607
+            </a>
+            <a class="js-whatsapp-link" href="#">
+              <i class="bi bi-whatsapp me-2" aria-hidden="true"></i>(64) 98104-4281
+            </a>
+          </address>
         </footer>
       </section>
     </article>
