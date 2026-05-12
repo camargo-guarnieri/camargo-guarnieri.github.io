@@ -1512,6 +1512,206 @@
         font-size: clamp(1.1rem, 6.6vw, 1.55rem);
       }
     }
+
+
+    /* ==========================================================
+       CORREÇÕES FINAIS — ALINHAMENTO, SIMETRIA E PELÍCULAS
+       Mantém textos e layout, corrige o encaixe da hero com as seções.
+       ========================================================== */
+
+    .invitation {
+      --poster-inner-max: 980px;
+      --poster-gutter: clamp(1rem, 4.4vw, 3rem);
+      --poster-section-gap: clamp(1rem, 2.2vw, 1.5rem);
+    }
+
+    .hero {
+      padding:
+        clamp(3rem, 5.4vw, 4.8rem) var(--poster-gutter) var(--poster-section-gap);
+    }
+
+    .hero>.container-fluid,
+    .content-sections {
+      width: 100%;
+      max-width: var(--poster-inner-max);
+      margin-right: auto;
+      margin-left: auto;
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+
+    .hero>.container-fluid>.row {
+      --bs-gutter-x: 0;
+      --bs-gutter-y: var(--poster-section-gap);
+    }
+
+    .hero .col-12.pt-4 {
+      padding-top: 0 !important;
+    }
+
+    .hero-card-grid {
+      width: auto;
+      max-width: none;
+      margin-top: 0 !important;
+      margin-right: calc(-.5 * var(--bs-gutter-x));
+      margin-left: calc(-.5 * var(--bs-gutter-x));
+    }
+
+    .content-sections {
+      padding-top: var(--poster-section-gap);
+      padding-bottom: clamp(2rem, 4vw, 3.5rem) !important;
+    }
+
+    .content-sections>.glass-card,
+    .content-sections>.row,
+    .footer-note {
+      margin-top: var(--poster-section-gap) !important;
+    }
+
+    .content-sections>.glass-card:first-child {
+      margin-top: 0 !important;
+    }
+
+    .hero-card-grid .event-card,
+    .hero-card-grid .brand-card {
+      min-height: clamp(300px, 27vw, 360px);
+    }
+
+    .film-strip {
+      position: absolute;
+      z-index: 0;
+      top: clamp(315px, 33vw, 430px);
+      width: min(52vw, 560px);
+      height: clamp(82px, 10vw, 128px);
+      pointer-events: none;
+      opacity: .36;
+      border-top: 1px solid rgba(255, 220, 145, .54);
+      border-bottom: 1px solid rgba(255, 220, 145, .48);
+      border-radius: 14px;
+      background:
+        linear-gradient(180deg,
+          rgba(255, 225, 154, .18) 0%,
+          rgba(84, 45, 10, .42) 18%,
+          rgba(9, 7, 7, .82) 50%,
+          rgba(94, 49, 9, .42) 82%,
+          rgba(255, 225, 154, .16) 100%);
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, .65),
+        inset 0 0 24px rgba(255, 204, 102, .08);
+      filter: drop-shadow(0 0 14px rgba(255, 181, 62, .14));
+    }
+
+    .film-strip::before {
+      content: "";
+      position: absolute;
+      inset: 8px 10px;
+      background-image:
+        repeating-linear-gradient(90deg,
+          rgba(0, 0, 0, .92) 0 16px,
+          transparent 16px 36px),
+        repeating-linear-gradient(90deg,
+          rgba(0, 0, 0, .92) 0 16px,
+          transparent 16px 36px);
+      background-size: 100% 16px, 100% 16px;
+      background-position: 0 0, 0 100%;
+      background-repeat: repeat-x;
+      opacity: .82;
+    }
+
+    .film-strip::after {
+      content: "";
+      position: absolute;
+      inset: 30px 14px;
+      background:
+        repeating-linear-gradient(90deg,
+          rgba(255, 222, 145, .12) 0 54px,
+          rgba(255, 222, 145, .34) 54px 56px,
+          rgba(0, 0, 0, .22) 56px 108px);
+      border-top: 1px solid rgba(255, 224, 145, .24);
+      border-bottom: 1px solid rgba(255, 224, 145, .20);
+      opacity: .82;
+    }
+
+    .film-strip--left {
+      left: clamp(-265px, -18vw, -120px);
+      transform:
+        perspective(760px) rotateX(58deg) rotateZ(17deg) skewX(-8deg);
+      transform-origin: right center;
+    }
+
+    .film-strip--right {
+      right: clamp(-265px, -18vw, -120px);
+      transform:
+        perspective(760px) rotateX(58deg) rotateZ(-17deg) skewX(8deg);
+      transform-origin: left center;
+    }
+
+    .hero>.container-fluid,
+    .content-sections {
+      position: relative;
+      z-index: 2;
+    }
+
+    .poster-contact-line a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: max-content;
+    }
+
+    @media (max-width: 991.98px) {
+      .invitation {
+        --poster-inner-max: 100%;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .hero {
+        padding:
+          clamp(2.4rem, 8vw, 3.1rem) 1rem 1rem;
+      }
+
+      .content-sections {
+        padding-top: 1rem;
+        padding-right: 1rem !important;
+        padding-left: 1rem !important;
+      }
+
+      .film-strip {
+        top: clamp(300px, 78vw, 430px);
+        width: 82vw;
+        height: 74px;
+        opacity: .22;
+      }
+
+      .film-strip--left {
+        left: -54vw;
+        transform:
+          perspective(620px) rotateX(58deg) rotateZ(15deg) skewX(-6deg);
+      }
+
+      .film-strip--right {
+        right: -54vw;
+        transform:
+          perspective(620px) rotateX(58deg) rotateZ(-15deg) skewX(6deg);
+      }
+
+      .film-strip::before {
+        inset: 7px 8px;
+        background-size: 100% 12px, 100% 12px;
+      }
+
+      .film-strip::after {
+        inset: 24px 11px;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .content-sections {
+        padding-right: .85rem !important;
+        padding-left: .85rem !important;
+      }
+    }
   </style>
 </head>
 
@@ -1524,6 +1724,8 @@
     <article class="invitation" aria-labelledby="eventTitle">
       <span class="stage-light stage-light--left" aria-hidden="true"></span>
       <span class="stage-light stage-light--right" aria-hidden="true"></span>
+      <span class="film-strip film-strip--left" aria-hidden="true"></span>
+      <span class="film-strip film-strip--right" aria-hidden="true"></span>
 
       <header class="hero" aria-labelledby="eventTitle">
         <div class="container-fluid position-relative">
@@ -1535,7 +1737,7 @@
                 <li class="col-6 col-md-auto"><span class="composer-pill">Hans Zimmer</span></li>
                 <li class="col-6 col-md-auto"><span class="composer-pill">John Williams</span></li>
                 <li class="col-6 col-md-auto"><span class="composer-pill">Alan Silvestri</span></li>
-              </ul>              
+              </ul>
               <h1 class="hero-title text-gradient-gold reveal" id="eventTitle">Tributo</h1>
               <!-- <p class="eyebrow mb-2 reveal">Uma noite mágica com o melhor do cinema</p> -->
               <div class="ornament-line reveal" aria-hidden="true">Uma noite mágica com o melhor do cinema</div>
@@ -1708,18 +1910,14 @@
         </section>
 
         <div class="row g-4 mt-1 align-items-stretch">
-          <div class="col-lg-7 reveal">
-            <section class="glass-card p-4 p-lg-5 h-100 quick-card" aria-labelledby="countdownTitle">
-              <div class="d-flex flex-column flex-md-row justify-content-between gap-3 align-items-md-center mb-4">
-                <div>
-                  <p class="eyebrow mb-2">Contagem regressiva</p>
-                  <h2 class="section-title h1 mb-0" id="countdownTitle">Faltam</h2>
-                </div>
-                <button class="btn btn-outline-warning rounded-pill px-4" type="button" data-js="shareButton">
+          <div class="col-lg-6 reveal">
+            <section class="glass-card p-4 h-100 quick-card" aria-labelledby="countdownTitle">
+              <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
+                <p class="eyebrow mb-2">Contagem regressiva</p>
+                <button class="btn btn-outline-warning rounded-pill px-2" type="button" data-js="shareButton">
                   <i class="bi bi-share me-2" aria-hidden="true"></i>Compartilhar
                 </button>
               </div>
-
               <div class="countdown" aria-live="polite" data-js="countdown">
                 <div class="countdown__item"><span class="countdown__number" data-countdown="days">--</span><span
                     class="countdown__label">dias</span></div>
@@ -1733,7 +1931,7 @@
             </section>
           </div>
 
-          <div class="col-lg-5 reveal">
+          <div class="col-lg-6 reveal">
             <section class="glass-card p-4 p-lg-5 h-100 d-flex flex-column justify-content-center quick-card"
               aria-labelledby="whatsappTitle" data-js="quickWhatsAppCard">
               <p class="eyebrow mb-2">Reserva rápida</p>
@@ -1791,12 +1989,15 @@
           <p class="font-cinzel text-uppercase mb-2 text-gold-soft">Uma noite mágica com o melhor do cinema</p>
           <p class="mb-0" data-js="footerPickupLine">Reserve pelo WhatsApp e retire sua pulseira na Escola de Música
             Camargo Guarnieri.</p>
-          <address class="poster-contact-line mt-3" aria-label="Contatos do evento">
-            <a href="tel:+556436212607">
-              <i class="bi bi-telephone-fill me-2" aria-hidden="true"></i>(64) 3621-2607
+          <address class="poster-contact-line mt-3" aria-label="Contatos do evento" data-js="footerContacts">
+            <a href="tel:+556436212607" data-js="footerPhoneLink" aria-label="Ligar para o atendimento do evento">
+              <i class="bi bi-telephone-fill me-2" aria-hidden="true"></i><span data-js="footerPhoneLabel">(64)
+                3621-2607</span>
             </a>
-            <a class="js-whatsapp-link" href="#">
-              <i class="bi bi-whatsapp me-2" aria-hidden="true"></i>(64) 98104-4281
+            <a class="js-whatsapp-link" href="#" data-js="footerWhatsAppLink"
+              aria-label="Reservar convite pelo WhatsApp">
+              <i class="bi bi-whatsapp me-2" aria-hidden="true"></i><span data-js="footerWhatsAppLabel">(64)
+                98104-4281</span>
             </a>
           </address>
         </footer>
@@ -1912,14 +2113,16 @@
       const OFFICIAL_SELLER = Object.freeze({
         slug: 'oficial',
         name: 'Escola de Música Camargo Guarnieri',
+        phone: '556436212607',
+        phoneLabel: '(64) 3621-2607',
         whatsapp: '5564981044281',
-        phoneLabel: '(64) 98104-4281',
+        whatsappLabel: '(64) 98104-4281',
         isOfficial: true
       });
 
       const SELLERS = Object.freeze([
-        { slug: 'weverson', name: 'Weverson', whatsapp: '5564981213931', phoneLabel: '(64) 9 8121-3931' },
-        { slug: 'renison', name: 'Renison', whatsapp: '5564986255986', phoneLabel: '(64) 9 8625-5986' }
+        { slug: 'weverson', name: 'Weverson', phone: '5564981213931', whatsapp: '5564981213931', phoneLabel: '(64) 9 8121-3931', whatsappLabel: '(64) 9 8121-3931' },
+        { slug: 'renison', name: 'Renison', phone: '5564986255986', whatsapp: '5564986255986', phoneLabel: '(64) 9 8625-5986', whatsappLabel: '(64) 9 8625-5986' }
       ]);
 
       const SELECTOR = Object.freeze({
@@ -1941,6 +2144,10 @@
         pickupSummary: '[data-js="pickupSummary"]',
         modalPickupLine: '[data-js="modalPickupLine"]',
         footerPickupLine: '[data-js="footerPickupLine"]',
+        footerPhoneLink: '[data-js="footerPhoneLink"]',
+        footerPhoneLabel: '[data-js="footerPhoneLabel"]',
+        footerWhatsAppLink: '[data-js="footerWhatsAppLink"]',
+        footerWhatsAppLabel: '[data-js="footerWhatsAppLabel"]',
         quickWhatsAppCard: '[data-js="quickWhatsAppCard"]',
         quickActions: '[data-js="quickActions"]',
         phoneButton: '[data-js="phoneButton"]',
@@ -1997,12 +2204,15 @@
 
       const sanitizeSeller = seller => {
         const whatsapp = onlyDigits(seller.whatsapp);
+        const phone = onlyDigits(seller.phone || seller.whatsapp);
 
         return {
           slug: normalizeSlug(seller.slug || seller.name),
           name: seller.name || 'Vendedor',
+          phone,
           whatsapp,
-          phoneLabel: seller.phoneLabel || formatPhoneFromDigits(whatsapp),
+          phoneLabel: seller.phoneLabel || formatPhoneFromDigits(phone),
+          whatsappLabel: seller.whatsappLabel || seller.phoneLabel || formatPhoneFromDigits(whatsapp),
           isOfficial: Boolean(seller.isOfficial)
         };
       };
@@ -2184,6 +2394,30 @@
         }
       };
 
+      const renderFooterContacts = () => {
+        const footerPhoneLink = $(SELECTOR.footerPhoneLink);
+        const footerPhoneLabel = $(SELECTOR.footerPhoneLabel);
+        const footerWhatsAppLink = $(SELECTOR.footerWhatsAppLink);
+        const footerWhatsAppLabel = $(SELECTOR.footerWhatsAppLabel);
+
+        if (footerPhoneLink && activeSeller.phone) {
+          footerPhoneLink.href = `tel:+${activeSeller.phone}`;
+          footerPhoneLink.setAttribute('aria-label', `Ligar para ${activeSeller.name}: ${activeSeller.phoneLabel}`);
+        }
+
+        if (footerPhoneLabel) {
+          footerPhoneLabel.textContent = activeSeller.phoneLabel;
+        }
+
+        if (footerWhatsAppLink) {
+          footerWhatsAppLink.setAttribute('aria-label', `Reservar convite pelo WhatsApp com ${activeSeller.name}: ${activeSeller.whatsappLabel}`);
+        }
+
+        if (footerWhatsAppLabel) {
+          footerWhatsAppLabel.textContent = activeSeller.whatsappLabel;
+        }
+      };
+
       const renderSellerInfo = () => {
         const sellerTitle = activeSeller.isOfficial ? 'Atendimento oficial' : 'Vendedor responsável';
         const sellerText = activeSeller.isOfficial
@@ -2198,7 +2432,7 @@
                 <div class="small text-uppercase fw-bold text-gold-soft">${sellerTitle}</div>
                 <div class="fw-bold">${activeSeller.name}</div>
                 <div class="small text-muted-gold">${sellerText}</div>
-                <div class="small mt-1 text-muted-gold"><i class="bi bi-whatsapp me-1" aria-hidden="true"></i>${activeSeller.phoneLabel}</div>
+                <div class="small mt-1 text-muted-gold"><i class="bi bi-whatsapp me-1" aria-hidden="true"></i>${activeSeller.whatsappLabel}</div>
               </div>
             </div>
           </div>
@@ -2234,9 +2468,10 @@
         });
 
         const phoneButton = $(SELECTOR.phoneButton);
-        if (phoneButton && !activeSeller.isOfficial) {
-          phoneButton.href = `tel:+${activeSeller.whatsapp}`;
+        if (phoneButton && activeSeller.phone) {
+          phoneButton.href = `tel:+${activeSeller.phone}`;
           phoneButton.innerHTML = `<i class="bi bi-telephone me-2" aria-hidden="true"></i>Ligar: ${activeSeller.phoneLabel}`;
+          phoneButton.setAttribute('aria-label', `Ligar para ${activeSeller.name}`);
         }
       };
 
@@ -2470,6 +2705,7 @@
       };
 
       const init = () => {
+        renderFooterContacts();
         renderSellerInfo();
         renderPickupRules();
         renderSellerLinksPanel();
