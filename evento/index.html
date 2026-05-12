@@ -1577,75 +1577,6 @@
       min-height: clamp(300px, 27vw, 360px);
     }
 
-    .film-strip {
-      position: absolute;
-      z-index: 0;
-      top: clamp(315px, 33vw, 430px);
-      width: min(52vw, 560px);
-      height: clamp(82px, 10vw, 128px);
-      pointer-events: none;
-      opacity: .36;
-      border-top: 1px solid rgba(255, 220, 145, .54);
-      border-bottom: 1px solid rgba(255, 220, 145, .48);
-      border-radius: 14px;
-      background:
-        linear-gradient(180deg,
-          rgba(255, 225, 154, .18) 0%,
-          rgba(84, 45, 10, .42) 18%,
-          rgba(9, 7, 7, .82) 50%,
-          rgba(94, 49, 9, .42) 82%,
-          rgba(255, 225, 154, .16) 100%);
-      box-shadow:
-        0 18px 45px rgba(0, 0, 0, .65),
-        inset 0 0 24px rgba(255, 204, 102, .08);
-      filter: drop-shadow(0 0 14px rgba(255, 181, 62, .14));
-    }
-
-    .film-strip::before {
-      content: "";
-      position: absolute;
-      inset: 8px 10px;
-      background-image:
-        repeating-linear-gradient(90deg,
-          rgba(0, 0, 0, .92) 0 16px,
-          transparent 16px 36px),
-        repeating-linear-gradient(90deg,
-          rgba(0, 0, 0, .92) 0 16px,
-          transparent 16px 36px);
-      background-size: 100% 16px, 100% 16px;
-      background-position: 0 0, 0 100%;
-      background-repeat: repeat-x;
-      opacity: .82;
-    }
-
-    .film-strip::after {
-      content: "";
-      position: absolute;
-      inset: 30px 14px;
-      background:
-        repeating-linear-gradient(90deg,
-          rgba(255, 222, 145, .12) 0 54px,
-          rgba(255, 222, 145, .34) 54px 56px,
-          rgba(0, 0, 0, .22) 56px 108px);
-      border-top: 1px solid rgba(255, 224, 145, .24);
-      border-bottom: 1px solid rgba(255, 224, 145, .20);
-      opacity: .82;
-    }
-
-    .film-strip--left {
-      left: clamp(-265px, -18vw, -120px);
-      transform:
-        perspective(760px) rotateX(58deg) rotateZ(17deg) skewX(-8deg);
-      transform-origin: right center;
-    }
-
-    .film-strip--right {
-      right: clamp(-265px, -18vw, -120px);
-      transform:
-        perspective(760px) rotateX(58deg) rotateZ(-17deg) skewX(8deg);
-      transform-origin: left center;
-    }
-
     .hero>.container-fluid,
     .content-sections {
       position: relative;
@@ -1676,34 +1607,6 @@
         padding-right: 1rem !important;
         padding-left: 1rem !important;
       }
-
-      .film-strip {
-        top: clamp(300px, 78vw, 430px);
-        width: 82vw;
-        height: 74px;
-        opacity: .22;
-      }
-
-      .film-strip--left {
-        left: -54vw;
-        transform:
-          perspective(620px) rotateX(58deg) rotateZ(15deg) skewX(-6deg);
-      }
-
-      .film-strip--right {
-        right: -54vw;
-        transform:
-          perspective(620px) rotateX(58deg) rotateZ(-15deg) skewX(6deg);
-      }
-
-      .film-strip::before {
-        inset: 7px 8px;
-        background-size: 100% 12px, 100% 12px;
-      }
-
-      .film-strip::after {
-        inset: 24px 11px;
-      }
     }
 
     @media (max-width: 575.98px) {
@@ -1724,9 +1627,6 @@
     <article class="invitation" aria-labelledby="eventTitle">
       <span class="stage-light stage-light--left" aria-hidden="true"></span>
       <span class="stage-light stage-light--right" aria-hidden="true"></span>
-      <span class="film-strip film-strip--left" aria-hidden="true"></span>
-      <span class="film-strip film-strip--right" aria-hidden="true"></span>
-
       <header class="hero" aria-labelledby="eventTitle">
         <div class="container-fluid position-relative">
           <div class="row g-4 align-items-center justify-content-center">
