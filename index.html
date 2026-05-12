@@ -1,0 +1,1622 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09070f">
+  <title>Tributo | OSCG</title>
+  <meta name="description" content="Convite interativo para o Tributo da Orquestra Sinfônica Camargo Guarnieri. Reserve seu convite pelo WhatsApp.">
+
+  <!-- Bootstrap 5+ -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #07050d;
+      --gold: #dca244;
+      --gold-2: #ffdf8c;
+      --gold-3: #8f5d19;
+      --cream: #fff1cf;
+      --muted: #d9c296;
+      --card: rgba(12, 10, 18, .74);
+      --border: rgba(255, 211, 117, .5);
+      --shadow: 0 24px 70px rgba(0, 0, 0, .45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 20% 12%, rgba(58, 105, 151, .35), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(211, 143, 44, .18), transparent 24%),
+        linear-gradient(180deg, #081428 0%, var(--bg) 46%, #050406 100%);
+      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    body::before {
+      background-image:
+        radial-gradient(circle, rgba(255, 255, 255, .95) 0 1px, transparent 1.6px),
+        radial-gradient(circle, rgba(255, 213, 124, .85) 0 1px, transparent 1.4px),
+        radial-gradient(circle, rgba(134, 194, 255, .65) 0 1px, transparent 1.2px);
+      background-size: 120px 120px, 180px 180px, 230px 230px;
+      background-position: 0 0, 35px 70px, 90px 20px;
+      animation: starsMove 55s linear infinite;
+      opacity: .82;
+    }
+
+    body::after {
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(220, 162, 68, .1), transparent 22%, transparent 78%, rgba(220, 162, 68, .1)),
+        radial-gradient(circle at center, transparent 0 45%, rgba(0, 0, 0, .45) 100%);
+    }
+
+    @keyframes starsMove {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-120px, 120px, 0); }
+    }
+
+    .font-cinzel {
+      font-family: "Cinzel", serif;
+    }
+
+    .font-playfair {
+      font-family: "Playfair Display", serif;
+    }
+
+    .gold-text {
+      color: transparent;
+      background: linear-gradient(180deg, #fff7c8 0%, #ffc55e 28%, #9c5a12 62%, #ffe5a4 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 4px 20px rgba(243, 171, 57, .25);
+    }
+
+    .page-shell {
+      position: relative;
+      min-height: 100vh;
+      padding: clamp(14px, 2vw, 26px);
+    }
+
+    .invitation-frame {
+      position: relative;
+      width: min(1180px, 100%);
+      margin-inline: auto;
+      border: 1px solid rgba(255, 214, 122, .8);
+      outline: 4px double rgba(220, 162, 68, .45);
+      border-radius: 18px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(7, 11, 24, .76), rgba(17, 8, 8, .83)),
+        radial-gradient(circle at 50% 15%, rgba(69, 126, 177, .32), transparent 36%);
+      box-shadow: var(--shadow), inset 0 0 60px rgba(249, 181, 67, .08);
+      isolation: isolate;
+    }
+
+    .invitation-frame::before,
+    .invitation-frame::after {
+      content: "✦";
+      position: absolute;
+      top: 12px;
+      color: var(--gold-2);
+      font-size: clamp(28px, 4vw, 48px);
+      opacity: .78;
+      z-index: 2;
+      text-shadow: 0 0 18px rgba(255, 211, 117, .7);
+    }
+
+    .invitation-frame::before {
+      left: 18px;
+    }
+
+    .invitation-frame::after {
+      right: 18px;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: clamp(34px, 6vw, 76px) clamp(18px, 5vw, 68px);
+    }
+
+    .spotlight {
+      position: absolute;
+      top: 110px;
+      width: 260px;
+      height: 460px;
+      background: radial-gradient(ellipse at top, rgba(255, 255, 255, .72), rgba(255, 255, 255, .18) 28%, transparent 62%);
+      filter: blur(.5px);
+      opacity: .5;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      animation: spotlightPulse 4s ease-in-out infinite alternate;
+    }
+
+    .spotlight.left {
+      left: -58px;
+      transform: rotate(-29deg);
+    }
+
+    .spotlight.right {
+      right: -58px;
+      transform: rotate(29deg);
+      animation-delay: .7s;
+    }
+
+    @keyframes spotlightPulse {
+      from { opacity: .36; }
+      to { opacity: .7; }
+    }
+
+    .composer-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: .55rem .9rem;
+      border: 1px solid rgba(255, 216, 137, .36);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .06);
+      color: var(--gold-2);
+      font-family: "Cinzel", serif;
+      font-weight: 700;
+      letter-spacing: .04em;
+      backdrop-filter: blur(8px);
+      box-shadow: inset 0 0 18px rgba(255, 207, 104, .06);
+      transform: translateY(0);
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+
+    .composer-pill:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 216, 137, .72);
+      background: rgba(255, 255, 255, .1);
+    }
+
+    .main-title {
+      font-size: clamp(3.4rem, 12vw, 8.8rem);
+      line-height: .88;
+      letter-spacing: .06em;
+      font-weight: 900;
+      margin: 0;
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, .65));
+      animation: titleGlow 3.4s ease-in-out infinite alternate;
+    }
+
+    @keyframes titleGlow {
+      from { filter: drop-shadow(0 10px 18px rgba(0, 0, 0, .65)); }
+      to { filter: drop-shadow(0 0 24px rgba(255, 192, 85, .38)); }
+    }
+
+    .sub-kicker {
+      color: var(--muted);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: clamp(.78rem, 1.6vw, 1rem);
+    }
+
+    .ornament-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: var(--gold);
+      opacity: .95;
+      margin: 12px auto 48px;
+      max-width: 540px;
+    }
+
+    .ornament-line::before,
+    .ornament-line::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    .ornament-line::after {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .glass-card {
+      background: var(--card);
+      border: 1px solid rgba(255, 218, 135, .24);
+      border-radius: 24px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+      backdrop-filter: blur(14px);
+    }
+
+    .event-card {
+      position: relative;
+      min-height: 360px;
+      background:
+        radial-gradient(circle at 50% 10%, rgba(255, 252, 235, .72), transparent 18%),
+        linear-gradient(135deg, rgba(255, 246, 218, .96), rgba(214, 181, 116, .94));
+      color: #251606;
+      border: 4px double #9d681e;
+      border-radius: 14px;
+      padding: clamp(22px, 4vw, 44px) clamp(20px, 4vw, 34px) 84px;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .36), inset 0 0 20px rgba(96, 57, 8, .16);
+      overflow: hidden;
+    }
+
+    .event-card::before {
+      content: "❦";
+      position: absolute;
+      top: -26px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 78px;
+      height: 78px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #6f4310;
+      background: rgba(255, 236, 179, .9);
+      border: 1px solid rgba(111, 67, 16, .35);
+      font-size: 2rem;
+    }
+
+    .event-card .date {
+      margin-top: 10px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.5rem, 5.6vw, 4.1rem);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .event-card .place,
+    .event-card .time {
+      font-family: "Cinzel", serif;
+      font-weight: 900;
+      line-height: 1.05;
+      font-size: clamp(1.6rem, 3.8vw, 2.5rem);
+    }
+
+    .event-location-badge {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: max-content;
+      max-width: calc(100% - 36px);
+      padding: .72rem 1.1rem;
+      border-radius: 999px;
+      background: rgba(37, 22, 6, .92);
+      color: #f7dfab;
+      border: 1px solid rgba(157, 104, 30, .6);
+      font-weight: 800;
+      font-size: .92rem;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .22);
+      transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+      z-index: 2;
+      white-space: nowrap;
+    }
+
+    .event-location-badge:hover {
+      transform: translateX(-50%) translateY(-2px);
+      color: #fff2c9;
+      background: rgba(55, 33, 10, .96);
+      border-color: rgba(220, 162, 68, .85);
+    }
+
+    .brand-card {
+      min-height: 360px;
+      border-color: rgba(255, 218, 135, .32);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .35), inset 0 0 34px rgba(255, 213, 124, .04);
+    }
+
+    .brand-monogram {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(4rem, 10vw, 7rem);
+      line-height: .82;
+      color: transparent;
+      background: linear-gradient(180deg, #fff8dc, #d69a40 55%, #fff1b0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, .55));
+    }
+
+    .brand-monogram-os {
+      font-size: clamp(3.4rem, 8vw, 6.4rem);
+      line-height: .9;
+      letter-spacing: -.06em;
+      margin-bottom: .85rem;
+    }
+
+    .section-title {
+      font-family: "Cinzel", serif;
+      font-weight: 900;
+      color: var(--gold-2);
+      letter-spacing: .07em;
+    }
+
+    .info-icon {
+      width: 46px;
+      height: 46px;
+      flex: 0 0 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255, 230, 160, .26), rgba(220, 162, 68, .1));
+      color: var(--gold-2);
+      border: 1px solid rgba(255, 218, 135, .28);
+      font-size: 1.35rem;
+    }
+
+    .event-info-card {
+      height: 100%;
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 218, 135, .2);
+      box-shadow: inset 0 0 24px rgba(255, 213, 124, .035);
+      transition: transform .24s ease, border-color .24s ease, background .24s ease;
+    }
+
+    .event-info-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 218, 135, .42);
+      background: rgba(255, 255, 255, .09);
+    }
+
+    .event-info-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .event-info-title {
+      display: block;
+      color: var(--cream);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .event-info-value {
+      color: var(--muted);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .event-info-featured {
+      background: linear-gradient(135deg, rgba(242, 189, 94, .12), rgba(255, 255, 255, .055));
+    }
+
+    .benefit-card {
+      height: 100%;
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, .055);
+      border: 1px solid rgba(255, 218, 135, .18);
+    }
+
+    .benefit-card strong {
+      color: var(--gold-2);
+    }
+
+    .action-stack {
+      /* width: min(260px, 100%); */
+      margin-left: auto;
+      display: grid;
+      gap: 12px;
+    }
+
+    .action-stack .btn {
+      width: 100%;
+      min-height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: normal;
+      line-height: 1.25;
+    }
+
+    .btn-gold {
+      --bs-btn-color: #160f08;
+      --bs-btn-bg: #f2bd5e;
+      --bs-btn-border-color: #f2bd5e;
+      --bs-btn-hover-color: #120d06;
+      --bs-btn-hover-bg: #ffe2a3;
+      --bs-btn-hover-border-color: #ffe2a3;
+      --bs-btn-active-bg: #d99a39;
+      --bs-btn-active-border-color: #d99a39;
+      font-weight: 800;
+      letter-spacing: .02em;
+      box-shadow: 0 14px 26px rgba(242, 189, 94, .22);
+    }
+
+    .btn-whatsapp {
+      --bs-btn-color: #fff;
+      --bs-btn-bg: #1f9d55;
+      --bs-btn-border-color: #1f9d55;
+      --bs-btn-hover-color: #fff;
+      --bs-btn-hover-bg: #24b962;
+      --bs-btn-hover-border-color: #24b962;
+      font-weight: 800;
+      box-shadow: 0 14px 26px rgba(31, 157, 85, .22);
+    }
+
+    .pulse-cta {
+      position: relative;
+      isolation: isolate;
+      animation: ctaPulse 1.9s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-2px) scale(1.025); }
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1040;
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: #1f9d55;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, .38);
+      text-decoration: none;
+      font-size: 1.9rem;
+      animation: floatBtn 2.4s ease-in-out infinite;
+    }
+
+    @keyframes floatBtn {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .countdown-box {
+      min-width: 86px;
+      padding: 12px 10px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255, 218, 135, .22);
+    }
+
+    .countdown-number {
+      display: block;
+      color: var(--gold-2);
+      font-family: "Cinzel", serif;
+      font-size: clamp(1.5rem, 3vw, 2.3rem);
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .countdown-label {
+      color: var(--muted);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .support-logo {
+      width: min(230px, 100%);
+      aspect-ratio: 1 / 1;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid rgba(255, 218, 135, .18);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: #1b1410;
+      text-align: center;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .22), inset 0 0 24px rgba(255, 213, 124, .04);
+      transition: transform .24s ease, border-color .24s ease, background .24s ease;
+    }
+
+    .support-logo:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 218, 135, .48);
+      background: #fff;
+    }
+
+    .support-logo img {
+      display: block;
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      max-height: 180px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, .18));
+    }
+
+    .support-logo.logo-light,
+    .support-logo.logo-transparent {
+      background: #fff;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .75s ease, transform .75s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .modal-content {
+      background: linear-gradient(180deg, rgba(14, 10, 18, .98), rgba(26, 15, 11, .98));
+      border: 1px solid rgba(255, 218, 135, .28);
+      color: var(--cream);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .modal-header,
+    .modal-footer {
+      border-color: rgba(255, 218, 135, .18);
+    }
+
+    .form-control,
+    .form-select {
+      color: var(--cream);
+      background-color: rgba(255, 255, 255, .07);
+      border-color: rgba(255, 218, 135, .22);
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      color: var(--cream);
+      background-color: rgba(255, 255, 255, .1);
+      border-color: rgba(255, 218, 135, .65);
+      box-shadow: 0 0 0 .25rem rgba(220, 162, 68, .16);
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 241, 207, .48);
+    }
+
+    .form-select option {
+      color: #1b1410;
+      background-color: #fff;
+    }
+
+    .form-select option:checked {
+      color: #fff;
+      background-color: #2b6fd2;
+    }
+
+    .total-box {
+      background: rgba(242, 189, 94, .12);
+      border: 1px solid rgba(255, 218, 135, .24);
+      color: var(--cream);
+    }
+
+    .total-price {
+      color: var(--gold-2);
+      font-size: 1.35rem;
+      font-weight: 900;
+    }
+
+    .ticket-input-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .055);
+      border: 1px solid rgba(255, 218, 135, .18);
+    }
+
+    .ticket-input-card .form-label {
+      font-weight: 800;
+      color: var(--gold-2);
+    }
+
+    .footer-note {
+      color: var(--muted);
+      border-top: 1px solid rgba(255, 218, 135, .14);
+    }
+
+    @media (max-width: 991.98px) {
+      .hero {
+        min-height: auto;
+      }
+
+      .action-stack {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .hero {
+        padding-top: 54px;
+        padding-bottom: 46px;
+      }
+
+      .composer-pill {
+        width: 100%;
+      }
+
+      .event-card,
+      .brand-card {
+        min-height: 320px;
+      }
+
+      .floating-whatsapp {
+        width: 56px;
+        height: 56px;
+        font-size: 1.6rem;
+      }
+
+      .support-logo {
+        width: min(180px, 100%);
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="floating-whatsapp js-whatsapp" href="#" aria-label="Reservar convite pelo WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <main class="page-shell">
+    <section class="invitation-frame">
+      <span class="spotlight left"></span>
+      <span class="spotlight right"></span>
+
+      <div class="hero text-center">
+        <div class="container-fluid position-relative">
+          <div class="row g-4 align-items-center justify-content-center">
+            <div class="col-12">
+              <div class="row g-2 g-md-3 justify-content-between align-items-center mb-4 reveal">
+                <div class="col-6 col-md-auto"><span class="composer-pill">Ennio Morricone</span></div>
+                <div class="col-6 col-md-auto"><span class="composer-pill">Hans Zimmer</span></div>
+                <div class="col-6 col-md-auto"><span class="composer-pill">John Williams</span></div>
+                <div class="col-6 col-md-auto"><span class="composer-pill">Alan Silvestri</span></div>
+              </div>
+
+              <p class="sub-kicker mb-2 reveal">Uma noite mágica com o melhor do cinema</p>
+              <h1 class="main-title font-cinzel gold-text reveal">Tributo</h1>
+              <div class="ornament-line reveal"><i class="bi bi-music-note-beamed fs-2"></i></div>
+            </div>
+
+            <div class="col-12 col-xl-10 order-1">
+              <div class="row g-4 align-items-stretch justify-content-center">
+                <div class="col-lg-6 reveal">
+                  <div class="event-card h-100 d-flex flex-column justify-content-center text-center">
+                    <a
+                      href="https://maps.app.goo.gl/hFvK7NtxnZLegnYb9"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="event-location-badge text-decoration-none"
+                      aria-label="Ver localização do evento no Google Maps"
+                    >
+                      <i class="bi bi-geo-alt-fill"></i>
+                      Localização do evento
+                    </a>
+                    <div class="date">25 de Junho</div>
+                    <div class="place mt-3">IF Goiano</div>
+                    <div class="time mt-1">19h30</div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 reveal">
+                  <div class="glass-card brand-card h-100 p-4 p-lg-5 text-center d-flex flex-column justify-content-center">
+                    <div class="brand-monogram brand-monogram-os">OSCG</div>
+                    <h2 class="section-title h3 mb-2">Orquestra Sinfônica</h2>
+                    <p class="font-cinzel text-uppercase mb-4" style="letter-spacing:.12em; color: var(--gold-2) !important;">Camargo Guarnieri</p>
+                    <button type="button" class="btn btn-gold btn-lg rounded-pill px-4 pulse-cta" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                      <i class="bi bi-ticket-perforated me-2"></i>Reservar convite
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="container-fluid px-3 px-lg-5 pb-5">
+        <div class="glass-card p-4 p-lg-5 reveal">
+          <div class="row g-4 align-items-center">
+            <div class="col-lg-8">
+              <p class="sub-kicker mb-2">Evento especial</p>
+              <h2 class="section-title display-6 mb-3">Retire ou reserve seu convite</h2>
+              <p class="mb-0 text-opacity-75" style="color: var(--muted);">
+                Garanta sua presença em uma apresentação dedicada às trilhas inesquecíveis do cinema, com repertório inspirado em grandes compositores.
+              </p>
+            </div>
+            <div class="col-lg-4">
+              <div class="action-stack">
+                <button type="button" class="btn btn-gold btn-lg rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                  <i class="bi bi-ticket-perforated me-2"></i>Reservar convite
+                </button>
+                <a class="btn btn-outline-warning btn-lg rounded-pill px-4" href="https://maps.app.goo.gl/SdzFviSMzrk8Kyku9" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-geo-alt-fill me-2"></i>Local de retirada
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card p-4 p-lg-5 mt-4 reveal">
+          <div class="text-center mb-4">
+            <p class="sub-kicker mb-2">Informações</p>
+            <h2 class="section-title h1 mb-0">Dados do convite</h2>
+          </div>
+
+          <div class="row g-3 g-xl-4">
+            <div class="col-md-6 col-xl-4">
+              <div class="event-info-card">
+                <div class="event-info-head">
+                  <div class="info-icon"><i class="bi bi-calendar-event"></i></div>
+                  <span class="event-info-title">Data</span>
+                </div>
+                <p class="event-info-value">25 de Junho</p>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-xl-4">
+              <div class="event-info-card">
+                <div class="event-info-head">
+                  <div class="info-icon"><i class="bi bi-clock"></i></div>
+                  <span class="event-info-title">Horário</span>
+                </div>
+                <p class="event-info-value">19h30</p>
+              </div>
+            </div>
+
+            <div class="col-md-12 col-xl-4">
+              <div class="event-info-card event-info-featured">
+                <div class="event-info-head">
+                  <div class="info-icon"><i class="bi bi-cash-coin"></i></div>
+                  <span class="event-info-title">Ingresso</span>
+                </div>
+                <p class="event-info-value"><strong style="color: var(--gold-2);">R$ 50,00</strong> inteira</p>
+                <p class="event-info-value"><strong style="color: var(--gold-2);">R$ 25,00</strong> meia entrada</p>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <a class="event-info-card event-info-featured d-block text-decoration-none" href="https://maps.app.goo.gl/SdzFviSMzrk8Kyku9" target="_blank" rel="noopener noreferrer">
+                <div class="row g-3 align-items-center">
+                  <div class="col-lg">
+                    <div class="event-info-head mb-2">
+                      <div class="info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                      <span class="event-info-title">Retirada da pulseira</span>
+                    </div>
+                    <p class="event-info-value mb-1">Escola de Música Camargo Guarnieri</p>
+                    <p class="event-info-value mb-0">R. Ernesto Tito, 296 - Vila Carolina, Rio Verde - GO, 75906-441</p>
+                  </div>
+                  <div class="col-lg-auto">
+                    <span class="btn btn-outline-warning rounded-pill px-4">
+                      <i class="bi bi-map me-2"></i>Abrir no Google Maps
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card p-4 p-lg-5 mt-4 reveal">
+          <div class="text-center mb-4">
+            <p class="sub-kicker mb-2">Meia entrada</p>
+            <h2 class="section-title h1 mb-0">Quem paga R$ 25,00</h2>
+          </div>
+
+          <div class="row g-3">
+            <div class="col-md-4">
+              <div class="benefit-card">
+                <div class="event-info-head">
+                  <div class="info-icon"><i class="bi bi-person-hearts"></i></div>
+                  <span class="event-info-title">Crianças menores de 10 anos</span>
+                </div>
+                <p class="event-info-value">Pagam <strong>meia entrada</strong>, no valor de R$ 25,00.</p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="benefit-card">
+                <div class="event-info-head">
+                  <div class="info-icon"><i class="bi bi-stars"></i></div>
+                  <span class="event-info-title">Crianças com TEA</span>
+                </div>
+                <p class="event-info-value">Crianças com Transtorno do Espectro Autista também pagam <strong>meia entrada</strong>.</p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="benefit-card">
+                <div class="event-info-head">
+                  <div class="info-icon"><i class="bi bi-universal-access-circle"></i></div>
+                  <span class="event-info-title">Pessoas com deficiência - PcD</span>
+                </div>
+                <p class="event-info-value">Pessoas com deficiência pagam <strong>meia entrada</strong>, no valor de R$ 25,00.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-1 align-items-stretch">
+          <div class="col-lg-7 reveal">
+            <div class="glass-card p-4 p-lg-5 h-100">
+              <div class="d-flex flex-column flex-md-row justify-content-between gap-3 align-items-md-center mb-4">
+                <div>
+                  <p class="sub-kicker mb-2">Contagem regressiva</p>
+                  <h2 class="section-title h1 mb-0">Faltam</h2>
+                </div>
+                <button type="button" class="btn btn-outline-warning rounded-pill px-4" id="shareButton">
+                  <i class="bi bi-share me-2"></i>Compartilhar
+                </button>
+              </div>
+              <div class="d-flex flex-wrap gap-3" id="countdown" aria-live="polite">
+                <div class="countdown-box text-center"><span class="countdown-number" id="days">--</span><span class="countdown-label">dias</span></div>
+                <div class="countdown-box text-center"><span class="countdown-number" id="hours">--</span><span class="countdown-label">horas</span></div>
+                <div class="countdown-box text-center"><span class="countdown-number" id="minutes">--</span><span class="countdown-label">min</span></div>
+                <div class="countdown-box text-center"><span class="countdown-number" id="seconds">--</span><span class="countdown-label">seg</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5 reveal">
+            <div class="glass-card p-4 p-lg-5 h-100 d-flex flex-column justify-content-center">
+              <p class="sub-kicker mb-2">Reserva rápida</p>
+              <h2 class="section-title h1 mb-3">WhatsApp</h2>
+              <p class="mb-3" style="color: var(--muted);">Clique no botão abaixo para abrir a conversa com a mensagem pronta e solicitar seu convite.</p>
+              <div class="mb-4 small" style="color: var(--muted);">
+                <div><i class="bi bi-cash-coin me-2" style="color: var(--gold-2);"></i>Inteira: <strong>R$ 50,00</strong> | Meia: <strong>R$ 25,00</strong></div>
+                <div class="mt-2"><i class="bi bi-bag-check me-2" style="color: var(--gold-2);"></i>Retirada da pulseira: Escola de Música Camargo Guarnieri</div>
+              </div>
+              <div class="d-grid gap-3">
+                <a class="btn btn-whatsapp btn-lg rounded-pill js-whatsapp" href="#">
+                  <i class="bi bi-whatsapp me-2"></i>Reservar pelo WhatsApp
+                </a>
+                <a class="btn btn-outline-warning btn-lg rounded-pill" href="https://maps.app.goo.gl/SdzFviSMzrk8Kyku9" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-geo-alt-fill me-2"></i>Local de retirada
+                </a>
+                <a class="btn btn-outline-light btn-lg rounded-pill" href="tel:+556436212607">
+                  <i class="bi bi-telephone me-2"></i>Ligar: (64) 3621-2607
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card p-4 p-lg-5 mt-4 reveal">
+          <p class="sub-kicker text-center mb-3">Apoio</p>
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <!-- Troque o caminho das imagens abaixo pelos arquivos reais dos apoiadores. -->
+            <a class="support-logo logo-light" href="#" aria-label="MapleBear Canadian School">
+              <img src="assets/img/apoiadores/maplebear.png" alt="MapleBear Canadian School" loading="lazy">
+            </a>
+
+            <a class="support-logo logo-transparent" href="#" aria-label="Camargo Guarnieri Escola de Música">
+              <img src="assets/img/apoiadores/camargo-guarnieri.png" alt="Camargo Guarnieri Escola de Música" loading="lazy">
+            </a>
+
+            <a class="support-logo logo-transparent" href="#" aria-label="Instituto Federal Goiano">
+              <img src="assets/img/apoiadores/if-goiano.png" alt="Instituto Federal Goiano" loading="lazy">
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-note text-center mt-4 pt-4 reveal">
+          <p class="font-cinzel text-uppercase mb-2" style="letter-spacing:.14em; color: var(--gold-2);">Uma noite mágica com o melhor do cinema</p>
+          <p class="mb-0">Reserve pelo WhatsApp e retire sua pulseira na Escola de Música Camargo Guarnieri.</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <p class="sub-kicker mb-1">Reserva de convite</p>
+            <h5 class="modal-title section-title" id="reservationModalLabel">Enviar mensagem pelo WhatsApp</h5>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+
+        <form id="reservationForm">
+          <div class="modal-body">
+            <div class="alert rounded-4 mb-3 total-box">
+              <div><strong>Inteira:</strong> R$ 50,00 por pessoa.</div>
+              <div><strong>Meia entrada:</strong> R$ 25,00 para crianças menores de 10 anos, crianças com TEA e pessoas com deficiência - PcD.</div>
+              <div class="small mt-1" style="color: var(--muted);">A pulseira deve ser retirada na Escola de Música Camargo Guarnieri.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="guestName" class="form-label">Seu nome</label>
+              <input type="text" class="form-control form-control-lg rounded-4" id="guestName" placeholder="Digite seu nome" required>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <div class="ticket-input-card h-100">
+                  <label for="fullTicketQuantity" class="form-label">Convites inteiros</label>
+                  <input type="number" class="form-control form-control-lg rounded-4 ticket-quantity" id="fullTicketQuantity" min="0" step="1" inputmode="numeric" value="1">
+                  <div class="small mt-2" style="color: var(--muted);">R$ 50,00 cada</div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="ticket-input-card h-100">
+                  <label for="halfTicketQuantity" class="form-label">Meias entradas</label>
+                  <input type="number" class="form-control form-control-lg rounded-4 ticket-quantity" id="halfTicketQuantity" min="0" step="1" inputmode="numeric" value="0">
+                  <div class="small mt-2" style="color: var(--muted);">R$ 25,00 cada</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="alert rounded-4 mb-0 total-box">
+                <div class="d-flex flex-column gap-1">
+                  <div><strong>Inteiras:</strong> <span id="fullTicketLabel">1</span> × R$ 50,00 = <span id="fullTicketTotalLabel">R$ 50,00</span></div>
+                  <div><strong>Meias:</strong> <span id="halfTicketLabel">0</span> × R$ 25,00 = <span id="halfTicketTotalLabel">R$ 0,00</span></div>
+                  <div><strong>Total de convites:</strong> <span id="totalTicketQuantityLabel">1</span></div>
+                  <div><strong>Total:</strong> <span class="total-price" id="totalPriceLabel">R$ 50,00</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-0">
+              <label for="guestNote" class="form-label">Observação opcional</label>
+              <textarea class="form-control rounded-4" id="guestNote" rows="3" placeholder="Ex.: vou retirar na secretaria"></textarea>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-light rounded-pill px-4" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-whatsapp rounded-pill px-4">
+              <i class="bi bi-whatsapp me-2"></i>Abrir WhatsApp
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    $(function () {
+      /*
+        ============================================================
+        CONFIGURAÇÃO DOS VENDEDORES
+        ============================================================
+
+        Como funciona:
+        - O site continua sendo um único arquivo estático no GitHub Pages.
+        - Cada vendedor recebe um link com ?vendedor=slug.
+        - O JavaScript identifica o vendedor pela URL e direciona o WhatsApp
+          para o número cadastrado no array abaixo.
+
+        Exemplo:
+        https://renison-f.github.io/convite-evento/?vendedor=joao
+
+        Para adicionar vendedor:
+        1. Copie um bloco dentro do array sellers.
+        2. Altere slug, name, whatsapp e phoneLabel.
+        3. Faça commit no GitHub.
+
+        Importante:
+        - whatsapp deve ter DDI + DDD + número, somente números.
+        - Para Brasil, use 55 + DDD + número.
+        - Exemplo: 5564999999999
+      */
+
+      const officialSeller = {
+        slug: "oficial",
+        name: "Escola de Música Camargo Guarnieri",
+        whatsapp: "5564981044281",
+        phoneLabel: "(64) 98104-4281",
+        isOfficial: true
+      };
+
+      const sellers = [
+        {
+          slug: "joao",
+          name: "João",
+          whatsapp: "5564999999999",
+          phoneLabel: "(64) 99999-9999"
+        },
+        {
+          slug: "maria",
+          name: "Maria",
+          whatsapp: "5564888888888",
+          phoneLabel: "(64) 88888-8888"
+        },
+        {
+          slug: "ana",
+          name: "Ana",
+          whatsapp: "5564777777777",
+          phoneLabel: "(64) 77777-7777"
+        }
+      ];
+
+      /*
+        ============================================================
+        DADOS DO EVENTO
+        ============================================================
+      */
+
+      const eventTitle = "Tributo - Orquestra Sinfônica Camargo Guarnieri";
+      const eventDate = "25 de Junho";
+      const eventTime = "19h30";
+      const eventPlace = "IF Goiano";
+      const eventMapsUrl = "https://maps.app.goo.gl/hFvK7NtxnZLegnYb9";
+
+      const fullTicketPrice = 50;
+      const halfTicketPrice = 25;
+      const ticketPriceText = "Inteira: R$ 50,00 | Meia entrada: R$ 25,00";
+      const halfTicketRules = "Meia entrada para crianças menores de 10 anos, crianças com TEA e pessoas com deficiência - PcD";
+
+      const pickupPlace = "Escola de Música Camargo Guarnieri";
+      const pickupAddress = "R. Ernesto Tito, 296 - Vila Carolina, Rio Verde - GO, 75906-441";
+      const pickupMapsUrl = "https://maps.app.goo.gl/SdzFviSMzrk8Kyku9";
+
+      /*
+        ============================================================
+        FUNÇÕES UTILITÁRIAS
+        ============================================================
+      */
+
+      function onlyDigits(value) {
+        return String(value || "").replace(/\D/g, "");
+      }
+
+      function normalizeSlug(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+      }
+
+      function escapeHtml(value) {
+        return String(value || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      function isValidWhatsAppNumber(value) {
+        const digits = onlyDigits(value);
+        return digits.length >= 12;
+      }
+
+      function formatPhoneFromDigits(value) {
+        const digits = onlyDigits(value);
+
+        if (digits.startsWith("55") && digits.length >= 12) {
+          const ddd = digits.slice(2, 4);
+          const number = digits.slice(4);
+
+          if (number.length === 9) {
+            return "(" + ddd + ") " + number.slice(0, 5) + "-" + number.slice(5);
+          }
+
+          if (number.length === 8) {
+            return "(" + ddd + ") " + number.slice(0, 4) + "-" + number.slice(4);
+          }
+        }
+
+        return digits;
+      }
+
+      function sanitizeSeller(seller) {
+        const whatsapp = onlyDigits(seller.whatsapp);
+
+        return {
+          slug: normalizeSlug(seller.slug || seller.name),
+          name: seller.name || "Vendedor",
+          whatsapp: whatsapp,
+          phoneLabel: seller.phoneLabel || formatPhoneFromDigits(whatsapp),
+          isOfficial: Boolean(seller.isOfficial)
+        };
+      }
+
+      const normalizedOfficialSeller = sanitizeSeller(officialSeller);
+      const normalizedSellers = sellers.map(sanitizeSeller).filter(function (seller) {
+        return seller.slug && seller.name && isValidWhatsAppNumber(seller.whatsapp);
+      });
+
+      function getUrlParam(name) {
+        return new URLSearchParams(window.location.search).get(name);
+      }
+
+      const requestedSellerSlug = normalizeSlug(getUrlParam("vendedor"));
+
+      function getActiveSeller() {
+        if (!requestedSellerSlug) {
+          return normalizedOfficialSeller;
+        }
+
+        const seller = normalizedSellers.find(function (item) {
+          return item.slug === requestedSellerSlug;
+        });
+
+        return seller || normalizedOfficialSeller;
+      }
+
+      const activeSeller = getActiveSeller();
+      const sellerWasRequested = Boolean(requestedSellerSlug);
+      const sellerWasFound = !sellerWasRequested || activeSeller.slug === requestedSellerSlug;
+
+      function getBaseEventUrl() {
+        const url = new URL(window.location.href);
+
+        url.search = "";
+        url.hash = "";
+        url.pathname = url.pathname.replace(/\/index\.html$/i, "/");
+
+        return url.toString();
+      }
+
+      function getSellerLink(seller) {
+        const url = new URL(getBaseEventUrl());
+        url.searchParams.set("vendedor", seller.slug);
+        return url.toString();
+      }
+
+      function getCurrentShareUrl() {
+        if (activeSeller.isOfficial) {
+          return getBaseEventUrl();
+        }
+
+        return getSellerLink(activeSeller);
+      }
+
+      function buildWhatsAppUrl(message, seller) {
+        const targetSeller = seller || activeSeller;
+        return "https://wa.me/" + targetSeller.whatsapp + "?text=" + encodeURIComponent(message);
+      }
+
+      function formatCurrency(value) {
+        return value.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL"
+        });
+      }
+
+      function normalizeQuantity(value) {
+        const quantity = parseInt(value, 10);
+
+        if (isNaN(quantity) || quantity < 0) {
+          return 0;
+        }
+
+        return quantity;
+      }
+
+      function getSellerMessageLine() {
+        if (activeSeller.isOfficial) {
+          return " Estou entrando em contato pelo site oficial do evento.";
+        }
+
+        return " Vim pelo convite do(a) vendedor(a) " + activeSeller.name + ".";
+      }
+
+      function copyTextToClipboard(text, callback) {
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(function () {
+            if (typeof callback === "function") {
+              callback();
+            }
+          });
+
+          return;
+        }
+
+        const $tempInput = $("<input>");
+        $("body").append($tempInput);
+        $tempInput.val(text).trigger("select");
+        document.execCommand("copy");
+        $tempInput.remove();
+
+        if (typeof callback === "function") {
+          callback();
+        }
+      }
+
+      /*
+        ============================================================
+        CÁLCULO DOS CONVITES
+        ============================================================
+      */
+
+      function getTicketSummary() {
+        const fullQuantity = normalizeQuantity($("#fullTicketQuantity").val());
+        const halfQuantity = normalizeQuantity($("#halfTicketQuantity").val());
+        const fullTotal = fullQuantity * fullTicketPrice;
+        const halfTotal = halfQuantity * halfTicketPrice;
+        const totalQuantity = fullQuantity + halfQuantity;
+        const totalValue = fullTotal + halfTotal;
+
+        return {
+          fullQuantity,
+          halfQuantity,
+          fullTotal,
+          halfTotal,
+          totalQuantity,
+          totalValue
+        };
+      }
+
+      function updateTotalPrice() {
+        const summary = getTicketSummary();
+
+        $("#fullTicketLabel").text(summary.fullQuantity);
+        $("#halfTicketLabel").text(summary.halfQuantity);
+        $("#fullTicketTotalLabel").text(formatCurrency(summary.fullTotal));
+        $("#halfTicketTotalLabel").text(formatCurrency(summary.halfTotal));
+        $("#totalTicketQuantityLabel").text(summary.totalQuantity);
+        $("#totalPriceLabel").text(formatCurrency(summary.totalValue));
+      }
+
+      /*
+        ============================================================
+        MENSAGENS E AÇÕES DO WHATSAPP
+        ============================================================
+      */
+
+      function defaultMessage() {
+        return "Olá!" +
+          getSellerMessageLine() +
+          " Gostaria de reservar meu convite para o " +
+          eventTitle +
+          ", no dia " + eventDate +
+          ", às " + eventTime +
+          ", no " + eventPlace +
+          ". Valores: " + ticketPriceText +
+          ". " + halfTicketRules +
+          ". Local do evento: " + eventMapsUrl +
+          ". Retirada da pulseira em " + pickupPlace +
+          ", no endereço: " + pickupAddress +
+          ". Localização da retirada: " + pickupMapsUrl + ".";
+      }
+
+      $(".js-whatsapp").on("click", function (event) {
+        event.preventDefault();
+        window.open(buildWhatsAppUrl(defaultMessage()), "_blank", "noopener,noreferrer");
+      });
+
+      $(".ticket-quantity").on("input change", function () {
+        const sanitizedQuantity = normalizeQuantity($(this).val());
+        $(this).val(sanitizedQuantity);
+        updateTotalPrice();
+      });
+
+      $("#reservationForm").on("submit", function (event) {
+        event.preventDefault();
+
+        const name = $.trim($("#guestName").val());
+        const note = $.trim($("#guestNote").val());
+        const summary = getTicketSummary();
+
+        if (!summary.totalQuantity || summary.totalQuantity < 1) {
+          alert("Informe pelo menos 1 convite inteiro ou 1 meia entrada.");
+          return;
+        }
+
+        let message =
+          "Olá! Meu nome é " + name + "." +
+          getSellerMessageLine() +
+          " Gostaria de reservar convite(s) para o " + eventTitle +
+          ", no dia " + eventDate +
+          ", às " + eventTime +
+          ", no " + eventPlace + "." +
+          " Quantidade: " + summary.fullQuantity + " inteira(s) e " + summary.halfQuantity + " meia(s), totalizando " + summary.totalQuantity + " convite(s)." +
+          " Valores: inteira R$ 50,00 e meia entrada R$ 25,00." +
+          " Total estimado: " + formatCurrency(summary.totalValue) + "." +
+          " Regra da meia entrada: " + halfTicketRules + "." +
+          " Local do evento: " + eventPlace + " (" + eventMapsUrl + ")." +
+          " A pulseira deve ser retirada na " + pickupPlace +
+          ", no endereço: " + pickupAddress +
+          ". Localização da retirada: " + pickupMapsUrl + ".";
+
+        if (!activeSeller.isOfficial) {
+          message += " Vendedor responsável: " + activeSeller.name + ".";
+        }
+
+        if (note.length > 0) {
+          message += " Observação: " + note + ".";
+        }
+
+        window.open(buildWhatsAppUrl(message), "_blank", "noopener,noreferrer");
+      });
+
+      /*
+        ============================================================
+        IDENTIFICAÇÃO VISUAL DO VENDEDOR NA PÁGINA
+        ============================================================
+      */
+
+      function renderSellerInfo() {
+        const sellerTitle = activeSeller.isOfficial
+          ? "Atendimento oficial"
+          : "Vendedor responsável";
+
+        const sellerText = activeSeller.isOfficial
+          ? "As reservas serão direcionadas para o WhatsApp oficial do evento."
+          : "As reservas deste link serão direcionadas para o WhatsApp de " + activeSeller.name + ".";
+
+        const sellerHtml =
+          '<div class="alert rounded-4 mb-4 total-box seller-info-box">' +
+            '<div class="d-flex align-items-start gap-3">' +
+              '<div class="info-icon" style="width:42px;height:42px;flex:0 0 42px;font-size:1.1rem;">' +
+                '<i class="bi bi-person-badge"></i>' +
+              '</div>' +
+              '<div>' +
+                '<div class="small text-uppercase fw-bold" style="letter-spacing:.08em;color:var(--gold-2);">' + escapeHtml(sellerTitle) + '</div>' +
+                '<div class="fw-bold">' + escapeHtml(activeSeller.name) + '</div>' +
+                '<div class="small" style="color:var(--muted);">' + escapeHtml(sellerText) + '</div>' +
+                '<div class="small mt-1" style="color:var(--muted);"><i class="bi bi-whatsapp me-1"></i>' + escapeHtml(activeSeller.phoneLabel) + '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+
+        const $quickWhatsAppCard = $(".btn-whatsapp.js-whatsapp").closest(".glass-card").first();
+
+        if ($quickWhatsAppCard.length && !$quickWhatsAppCard.find(".seller-info-box").length) {
+          $quickWhatsAppCard.find(".d-grid").before(sellerHtml);
+        }
+
+        const modalSellerHtml =
+          '<div class="alert rounded-4 total-box mb-3 seller-modal-box">' +
+            '<strong>Destino da reserva:</strong> ' + escapeHtml(activeSeller.name) +
+            '<div class="small mt-1" style="color:var(--muted);">O WhatsApp será aberto diretamente para este contato.</div>' +
+          '</div>';
+
+        const $modalBody = $("#reservationForm .modal-body");
+
+        if ($modalBody.length && !$modalBody.find(".seller-modal-box").length) {
+          $modalBody.prepend(modalSellerHtml);
+        }
+
+        if (sellerWasRequested && !sellerWasFound) {
+          const warningHtml =
+            '<div class="alert rounded-4 total-box mb-4 seller-warning-box">' +
+              '<strong>Vendedor não encontrado:</strong> ' + escapeHtml(requestedSellerSlug) +
+              '<div class="small mt-1" style="color:var(--muted);">A reserva será direcionada para o atendimento oficial do evento.</div>' +
+            '</div>';
+
+          $("section.container-fluid.px-3.px-lg-5.pb-5").prepend(warningHtml);
+        }
+
+        $(".js-whatsapp").attr(
+          "aria-label",
+          "Reservar convite pelo WhatsApp com " + activeSeller.name
+        );
+
+        if (!activeSeller.isOfficial) {
+          const $phoneButton = $('a[href^="tel:"]').first();
+
+          if ($phoneButton.length) {
+            $phoneButton.attr("href", "tel:+" + activeSeller.whatsapp);
+            $phoneButton.html('<i class="bi bi-telephone me-2"></i>Ligar: ' + escapeHtml(activeSeller.phoneLabel));
+          }
+        }
+      }
+
+      /*
+        ============================================================
+        PAINEL ADMINISTRATIVO SIMPLES PARA GERAR LINKS
+        ============================================================
+
+        Acesse:
+        https://renison-f.github.io/convite-evento/?admin=vendedores
+      */
+
+      function renderSellerLinksPanel() {
+        const adminMode = normalizeSlug(getUrlParam("admin"));
+
+        if (adminMode !== "vendedores") {
+          return;
+        }
+
+        const allPanelSellers = [normalizedOfficialSeller].concat(normalizedSellers);
+
+        const sellerRows = allPanelSellers.map(function (seller) {
+          const link = seller.isOfficial ? getBaseEventUrl() : getSellerLink(seller);
+
+          return '' +
+            '<div class="ticket-input-card mb-3">' +
+              '<div class="row g-3 align-items-center">' +
+                '<div class="col-lg-3">' +
+                  '<div class="fw-bold" style="color:var(--gold-2);">' + escapeHtml(seller.name) + '</div>' +
+                  '<div class="small" style="color:var(--muted);">' + escapeHtml(seller.phoneLabel) + '</div>' +
+                  '<div class="small" style="color:var(--muted);">Slug: ' + escapeHtml(seller.slug) + '</div>' +
+                '</div>' +
+                '<div class="col-lg">' +
+                  '<input type="text" class="form-control rounded-4 seller-link-input" value="' + escapeHtml(link) + '" readonly>' +
+                '</div>' +
+                '<div class="col-lg-auto">' +
+                  '<button type="button" class="btn btn-outline-warning rounded-pill px-4 js-copy-seller-link" data-link="' + escapeHtml(link) + '">' +
+                    '<i class="bi bi-clipboard me-2"></i>Copiar link' +
+                  '</button>' +
+                '</div>' +
+              '</div>' +
+            '</div>';
+        }).join("");
+
+        const panelHtml =
+          '<div class="glass-card p-4 p-lg-5 mt-4 mb-4 reveal is-visible" id="sellerLinksPanel">' +
+            '<div class="text-center mb-4">' +
+              '<p class="sub-kicker mb-2">Controle interno</p>' +
+              '<h2 class="section-title h1 mb-0">Links dos vendedores</h2>' +
+              '<p class="mt-3 mb-0" style="color:var(--muted);">Copie o link de cada vendedor e envie individualmente para divulgação.</p>' +
+            '</div>' +
+            sellerRows +
+          '</div>';
+
+        $("section.container-fluid.px-3.px-lg-5.pb-5").prepend(panelHtml);
+
+        $(".seller-link-input").on("focus", function () {
+          this.select();
+        });
+
+        $(".js-copy-seller-link").on("click", function () {
+          const $button = $(this);
+          const link = $button.attr("data-link");
+          const originalHtml = $button.html();
+
+          copyTextToClipboard(link, function () {
+            $button.html('<i class="bi bi-check2 me-2"></i>Copiado');
+
+            setTimeout(function () {
+              $button.html(originalHtml);
+            }, 1800);
+          });
+        });
+      }
+
+      /*
+        ============================================================
+        CONTAGEM REGRESSIVA
+        ============================================================
+      */
+
+      function setEventYear() {
+        const now = new Date();
+        let year = now.getFullYear();
+        let target = new Date(year, 5, 25, 19, 30, 0);
+
+        if (target.getTime() < now.getTime()) {
+          year += 1;
+          target = new Date(year, 5, 25, 19, 30, 0);
+        }
+
+        return target;
+      }
+
+      const targetDate = setEventYear();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate.getTime() - now;
+
+        if (distance <= 0) {
+          $("#days").text("00");
+          $("#hours").text("00");
+          $("#minutes").text("00");
+          $("#seconds").text("00");
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        $("#days").text(String(days).padStart(2, "0"));
+        $("#hours").text(String(hours).padStart(2, "0"));
+        $("#minutes").text(String(minutes).padStart(2, "0"));
+        $("#seconds").text(String(seconds).padStart(2, "0"));
+      }
+
+      /*
+        ============================================================
+        ANIMAÇÕES
+        ============================================================
+      */
+
+      function revealOnScroll() {
+        const windowBottom = $(window).scrollTop() + $(window).height();
+
+        $(".reveal").each(function () {
+          const elementTop = $(this).offset().top + 40;
+
+          if (windowBottom > elementTop) {
+            $(this).addClass("is-visible");
+          }
+        });
+      }
+
+      /*
+        ============================================================
+        COMPARTILHAMENTO
+        ============================================================
+      */
+
+      $("#shareButton").on("click", async function () {
+        const shareUrl = getCurrentShareUrl();
+
+        const shareData = {
+          title: eventTitle,
+          text: "Reserve seu convite para o " + eventTitle + " - " + eventDate + ", " + eventTime + ", " + eventPlace + ".",
+          url: shareUrl
+        };
+
+        if (navigator.share) {
+          try {
+            await navigator.share(shareData);
+          } catch (error) {}
+        } else {
+          const $button = $("#shareButton");
+          const originalText = $button.html();
+
+          copyTextToClipboard(shareUrl, function () {
+            $button.html('<i class="bi bi-check2 me-2"></i>Link copiado');
+
+            setTimeout(function () {
+              $button.html(originalText);
+            }, 1800);
+          });
+        }
+      });
+
+      /*
+        ============================================================
+        INICIALIZAÇÃO
+        ============================================================
+      */
+
+      renderSellerInfo();
+      renderSellerLinksPanel();
+
+      updateCountdown();
+      updateTotalPrice();
+
+      setInterval(updateCountdown, 1000);
+
+      revealOnScroll();
+      $(window).on("scroll resize", revealOnScroll);
+    });
+  </script>
+
+</body>
+</html>
