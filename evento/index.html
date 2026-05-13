@@ -514,10 +514,6 @@
       font-weight: 900;
     }
 
-    .pulse-cta {
-      animation: ctaPulse 2.2s ease-in-out infinite;
-    }
-
     .section-block {
       position: relative;
       padding: clamp(2.4rem, 6vw, 5.6rem) 0;
@@ -3362,6 +3358,7 @@
         gap: .42rem !important;
       }
     }
+
     .topbar,
     .topbar__inner,
     .primary-nav,
@@ -3464,6 +3461,7 @@
         padding-inline: 1.1rem !important;
       }
     }
+
     .hero::before,
     .hero-copy::before,
     .hero-copy::after {
@@ -3527,6 +3525,7 @@
     .hero-title--banner::after {
       box-shadow: none !important;
     }
+
     html {
       scroll-padding-top: 96px;
     }
@@ -3582,7 +3581,7 @@
         max-height: none !important;
       }
     }
-</style>
+  </style>
 
   <noscript>
     <style>
@@ -3695,7 +3694,7 @@
             </p>
 
             <div class="hero-actions reveal">
-              <button class="btn btn-gold btn-lg rounded-pill px-4 pulse-cta" type="button" data-bs-toggle="modal"
+              <button class="btn btn-gold btn-lg rounded-pill px-4" type="button" data-bs-toggle="modal"
                 data-bs-target="#reservationModal">
                 <i class="bi bi-ticket-perforated me-2" aria-hidden="true"></i>Reservar convite
               </button>
@@ -3937,8 +3936,8 @@
                   </address>
                 </div>
                 <div class="col-lg-auto js-pickup-card-action">
-                  <span class="btn btn-outline-warning rounded-pill px-4">
-                    <i class="bi bi-map me-2" aria-hidden="true"></i>Abrir no Google Maps
+                  <span class="btn btn-outline-warning rounded-pill px-4 js-pickup-card-button">
+                    <i class="bi bi-map me-2 js-pickup-action-icon" aria-hidden="true"></i><span class="js-pickup-action-label">Abrir no Google Maps</span>
                   </span>
                 </div>
               </div>
@@ -3966,7 +3965,7 @@
                 </a>
                 <a class="btn btn-outline-warning btn-lg rounded-pill js-pickup-link"
                   href="https://maps.app.goo.gl/SdzFviSMzrk8Kyku9" target="_blank" rel="noopener noreferrer">
-                  <i class="bi bi-geo-alt-fill me-2" aria-hidden="true"></i>Local de retirada
+                  <i class="bi bi-geo-alt-fill me-2 js-pickup-link-icon" aria-hidden="true"></i><span class="js-pickup-link-label">Local de retirada</span>
                 </a>
                 <a class="btn btn-outline-light btn-lg rounded-pill" href="tel:+556436212607" data-js="phoneButton">
                   <i class="bi bi-telephone me-2" aria-hidden="true"></i>Ligar: (64) 3621-2607
@@ -3988,7 +3987,7 @@
 
         <div class="row g-3 g-xl-4">
           <div class="col-sm-6 col-xl-3 reveal">
-            <a class="social-card" href="https://www.instagram.com/camargo.guarnieri/" target="_blank" rel="noopener noreferrer" aria-label="Acompanhar a Camargo Guarnieri no Instagram">
+            <a class="social-card" href="https://www.instagram.com/orquestra_camargo_guarnieri/" target="_blank" rel="noopener noreferrer" aria-label="Acompanhar a Camargo Guarnieri no Instagram">
               <div>
                 <span class="social-card__icon" aria-hidden="true"><i class="bi bi-instagram"></i></span>
                 <strong class="social-card__title">Instagram</strong>
@@ -4021,13 +4020,13 @@
           </div>
 
           <div class="col-sm-6 col-xl-3 reveal">
-            <a class="social-card" href="https://maps.app.goo.gl/SdzFviSMzrk8Kyku9" target="_blank" rel="noopener noreferrer" aria-label="Ver localização da retirada no Google Maps">
+            <a class="social-card js-pickup-link js-pickup-social-card" href="https://maps.app.goo.gl/SdzFviSMzrk8Kyku9" target="_blank" rel="noopener noreferrer" aria-label="Ver localização da retirada no Google Maps">
               <div>
-                <span class="social-card__icon" aria-hidden="true"><i class="bi bi-geo-alt-fill"></i></span>
-                <strong class="social-card__title">Localização</strong>
-                <p class="social-card__text">Veja o endereço para retirada da pulseira e organize o melhor trajeto com antecedência.</p>
+                <span class="social-card__icon" aria-hidden="true"><i class="bi bi-geo-alt-fill js-pickup-social-icon"></i></span>
+                <strong class="social-card__title js-pickup-social-title">Localização</strong>
+                <p class="social-card__text js-pickup-social-text">Veja o endereço para retirada da pulseira e organize o melhor trajeto com antecedência.</p>
               </div>
-              <span class="social-card__action">Abrir mapa <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
+              <span class="social-card__action"><span class="js-pickup-social-action">Abrir mapa</span> <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
             </a>
           </div>
         </div>
@@ -4212,6 +4211,16 @@
         pickupPrimary: '.js-pickup-primary',
         pickupSecondary: '.js-pickup-secondary',
         pickupCardAction: '.js-pickup-card-action',
+        pickupCardButton: '.js-pickup-card-button',
+        pickupActionIcon: '.js-pickup-action-icon',
+        pickupActionLabel: '.js-pickup-action-label',
+        pickupLinkIcon: '.js-pickup-link-icon',
+        pickupLinkLabel: '.js-pickup-link-label',
+        pickupSocialCard: '.js-pickup-social-card',
+        pickupSocialIcon: '.js-pickup-social-icon',
+        pickupSocialTitle: '.js-pickup-social-title',
+        pickupSocialText: '.js-pickup-social-text',
+        pickupSocialAction: '.js-pickup-social-action',
         pickupSummary: '[data-js="pickupSummary"]',
         modalPickupLine: '[data-js="modalPickupLine"]',
         footerPickupLine: '[data-js="footerPickupLine"]',
@@ -4340,26 +4349,44 @@
       const getPickupInfo = () => {
         if (activeSeller.isOfficial) {
           return {
-            hasMap: true,
+            type: 'official',
+            actionUrl: EVENT.pickupMapsUrl,
             title: 'Retirada da pulseira',
             primary: EVENT.pickupPlace,
             secondary: EVENT.pickupAddress,
             summaryLine: `Retirada da pulseira: ${EVENT.pickupPlace}`,
             modalLine: `A pulseira deve ser retirada na ${EVENT.pickupPlace}.`,
             footerLine: 'Reserve pelo WhatsApp e retire sua pulseira na Escola de Música Camargo Guarnieri.',
-            messageLine: ''
+            cardActionIcon: 'bi-map',
+            linkActionIcon: 'bi-geo-alt-fill',
+            actionLabel: 'Abrir no Google Maps',
+            linkLabel: 'Local de retirada',
+            socialTitle: 'Localização',
+            socialText: 'Veja o endereço para retirada da pulseira e organize o melhor trajeto com antecedência.',
+            socialAction: 'Abrir mapa',
+            ariaLabel: 'Ver localização da retirada no Google Maps'
           };
         }
 
+        const pickupMessage = `Olá, ${activeSeller.name}! Gostaria de combinar a retirada da minha pulseira do ${EVENT.title}.`;
+
         return {
-          hasMap: false,
-          title: 'Retirada com o vendedor',
+          type: 'seller',
+          actionUrl: buildWhatsAppUrl(pickupMessage),
+          title: 'Retirada com vendedor',
           primary: `Diretamente com ${activeSeller.name}`,
-          secondary: 'Combine a entrega da pulseira pelo WhatsApp do vendedor responsável.',
-          summaryLine: `Retirada da pulseira: diretamente com ${activeSeller.name}`,
-          modalLine: `A pulseira deve ser retirada diretamente com ${activeSeller.name}. Combine a entrega pelo WhatsApp do vendedor responsável.`,
+          secondary: 'A entrega da pulseira será combinada pelo WhatsApp do vendedor responsável por este link.',
+          summaryLine: `Retirada da pulseira: combinar diretamente com ${activeSeller.name}`,
+          modalLine: `A pulseira deve ser retirada diretamente com ${activeSeller.name}. Combine a entrega pelo WhatsApp do vendedor responsável por este link.`,
           footerLine: `Reserve pelo WhatsApp e retire sua pulseira diretamente com ${activeSeller.name}.`,
-          messageLine: ''
+          cardActionIcon: 'bi-whatsapp',
+          linkActionIcon: 'bi-whatsapp',
+          actionLabel: 'Combinar pelo WhatsApp',
+          linkLabel: 'Combinar retirada',
+          socialTitle: 'Retirada',
+          socialText: `Combine a entrega da pulseira diretamente com ${activeSeller.name} pelo WhatsApp.`,
+          socialAction: 'Chamar vendedor',
+          ariaLabel: `Combinar retirada da pulseira pelo WhatsApp com ${activeSeller.name}`
         };
       };
 
@@ -4416,6 +4443,27 @@
         window.open(buildWhatsAppUrl(message), '_blank', 'noopener,noreferrer');
       };
 
+      const setBootstrapIcon = (element, iconName) => {
+        if (!element || !iconName) {
+          return;
+        }
+
+        element.className = element.className
+          .split(/\s+/)
+          .filter(className => className && className !== 'bi' && !className.startsWith('bi-'))
+          .concat(['bi', iconName])
+          .join(' ');
+      };
+
+      const setActionButtonVariant = (button, pickup) => {
+        if (!button) {
+          return;
+        }
+
+        button.classList.toggle('btn-outline-warning', pickup.type === 'official');
+        button.classList.toggle('btn-whatsapp', pickup.type === 'seller');
+      };
+
       const renderPickupRules = () => {
         const pickup = getPickupInfo();
         const pickupCard = $(SELECTOR.pickupCard);
@@ -4425,6 +4473,9 @@
         updateText(SELECTOR.pickupSecondary, pickup.secondary);
         updateText(SELECTOR.modalPickupLine, pickup.modalLine);
         updateText(SELECTOR.footerPickupLine, pickup.footerLine);
+        updateText(SELECTOR.pickupSocialTitle, pickup.socialTitle);
+        updateText(SELECTOR.pickupSocialText, pickup.socialText);
+        updateText(SELECTOR.pickupSocialAction, pickup.socialAction);
 
         const pickupSummary = $(SELECTOR.pickupSummary);
         if (pickupSummary) {
@@ -4432,27 +4483,34 @@
         }
 
         if (pickupCard) {
-          if (pickup.hasMap) {
-            pickupCard.href = EVENT.pickupMapsUrl;
-            pickupCard.target = '_blank';
-            pickupCard.rel = 'noopener noreferrer';
-            pickupCard.style.cursor = 'pointer';
-          } else {
-            pickupCard.removeAttribute('href');
-            pickupCard.removeAttribute('target');
-            pickupCard.removeAttribute('rel');
-            pickupCard.style.cursor = 'default';
-            $(SELECTOR.pickupCardAction, pickupCard)?.remove();
-          }
+          pickupCard.href = pickup.actionUrl;
+          pickupCard.target = '_blank';
+          pickupCard.rel = 'noopener noreferrer';
+          pickupCard.style.cursor = 'pointer';
+          pickupCard.setAttribute('aria-label', pickup.ariaLabel);
+
+          setBootstrapIcon($(SELECTOR.pickupActionIcon, pickupCard), pickup.cardActionIcon);
+          updateText(SELECTOR.pickupActionLabel, pickup.actionLabel, pickupCard);
+          setActionButtonVariant($(SELECTOR.pickupCardButton, pickupCard), pickup);
         }
 
-        if (!pickup.hasMap) {
-          $$(SELECTOR.pickupLink).forEach(link => {
-            link.classList.add('is-hidden');
-            link.setAttribute('aria-hidden', 'true');
-            link.setAttribute('tabindex', '-1');
-          });
-        }
+        $$(SELECTOR.pickupLink).forEach(link => {
+          link.href = pickup.actionUrl;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.classList.remove('is-hidden');
+          link.removeAttribute('aria-hidden');
+          link.removeAttribute('tabindex');
+          link.setAttribute('aria-label', pickup.ariaLabel);
+
+          if (link.classList.contains('btn')) {
+            setBootstrapIcon($(SELECTOR.pickupLinkIcon, link), pickup.linkActionIcon);
+            updateText(SELECTOR.pickupLinkLabel, pickup.linkLabel, link);
+            setActionButtonVariant(link, pickup);
+          }
+        });
+
+        setBootstrapIcon($(SELECTOR.pickupSocialIcon), pickup.linkActionIcon);
       };
 
       const renderFooterContacts = () => {
@@ -4887,7 +4945,9 @@
           }
 
           try {
-            target.focus({ preventScroll: true });
+            target.focus({
+              preventScroll: true
+            });
           } catch (error) {
             target.focus();
           }
@@ -4896,7 +4956,9 @@
             target.addEventListener('blur', () => {
               target.removeAttribute('tabindex');
               delete target.dataset.navFocusAdded;
-            }, { once: true });
+            }, {
+              once: true
+            });
           }
         };
 
@@ -4931,7 +4993,9 @@
 
           offcanvasElement.addEventListener('hidden.bs.offcanvas', () => {
             window.requestAnimationFrame(callback);
-          }, { once: true });
+          }, {
+            once: true
+          });
 
           offcanvas.hide();
         };
@@ -5018,8 +5082,12 @@
         };
 
         handleInitialHash();
-        window.addEventListener('load', handleInitialHash, { once: true });
-        window.addEventListener('scroll', updateActiveSection, { passive: true });
+        window.addEventListener('load', handleInitialHash, {
+          once: true
+        });
+        window.addEventListener('scroll', updateActiveSection, {
+          passive: true
+        });
         window.addEventListener('resize', updateActiveSection);
         window.addEventListener('hashchange', () => {
           if (window.location.hash) {
